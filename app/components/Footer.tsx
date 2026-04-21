@@ -2,13 +2,21 @@ import type { GlobalSettings } from '@/lib/types';
 import { TfiEmail } from 'react-icons/tfi';
 import { FaPhoneAlt } from 'react-icons/fa';
 
-interface FooterProps {
-  globals: GlobalSettings;
-}
+type FooterProps = Pick<
+  GlobalSettings,
+  'navigation_links' | 'social_links' | 'site_name' | 'footer_description' | 'contact_email' | 'contact_text'
+>;
 
-export default function Footer({ globals }: FooterProps) {
-  const navigationLinks = globals.navigation_links || [];
-  const socialLinks = globals.social_links || [];
+export default function Footer({
+  navigation_links,
+  social_links,
+  site_name,
+  footer_description,
+  contact_email,
+  contact_text,
+}: FooterProps) {
+  const navigationLinks = navigation_links || [];
+  const socialLinks = social_links || [];
 
   return (
     <footer className='bg-background border-t border-gray-200 py-8 md:py-12'>
@@ -17,10 +25,10 @@ export default function Footer({ globals }: FooterProps) {
           {/* Brand */}
           <div className='col-span-2 md:col-span-1'>
             <h3 className='font-semibold text-primary mb-2 text-sm md:text-base'>
-              {globals.site_name}
+              {site_name}
             </h3>
             <p className='text-xs md:text-sm text-tertiary line-clamp-3'>
-              {globals.footer_description}
+              {footer_description}
             </p>
           </div>
 
@@ -65,20 +73,20 @@ export default function Footer({ globals }: FooterProps) {
               Contact
             </h4>
             <a
-              href={`mailto:${globals.contact_email}`}
+              href={`mailto:${contact_email}`}
               className='text-xs md:text-sm text-tertiary flex items-center gap-2 mb-2'
             >
               <span className='inline-flex items-center gap-1'>
                 <TfiEmail />
-                {globals.contact_email}
+                {contact_email}
               </span>
             </a>
             <a
-              href={`tel:${globals.contact_text}`}
+              href={`tel:${contact_text}`}
               className='text-xs md:text-sm text-tertiary flex items-center gap-2'
             >
               <FaPhoneAlt />
-              {globals.contact_text}
+              {contact_text}
             </a>
           </div>
 
@@ -101,7 +109,7 @@ export default function Footer({ globals }: FooterProps) {
         {/* Copyright */}
         <div className='border-t border-gray-200 pt-6'>
           <p className='text-xs text-tertiary text-center'>
-            &copy; {new Date().getFullYear()} {globals.site_name}. All rights
+            &copy; {new Date().getFullYear()} {site_name}. All rights
             reserved.
           </p>
         </div>

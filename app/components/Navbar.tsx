@@ -5,14 +5,11 @@ import Image from 'next/image';
 import type { GlobalSettings } from '@/lib/types';
 import { MdMenu } from 'react-icons/md';
 
-interface NavbarProps {
-  globals: GlobalSettings;
-}
+type NavbarProps = Pick<GlobalSettings, 'navigation_links'>;
 
-export default function Navbar({ globals }: NavbarProps) {
+export default function Navbar({ navigation_links }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
-
-  const navLinks = globals.navigation_links;
+  const navLinks = navigation_links || [];
 
   return (
     <nav className='sticky bg-background top-0 z-50 flex justify-between items-center px-8 shadow-md'>

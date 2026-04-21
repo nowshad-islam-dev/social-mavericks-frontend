@@ -59,3 +59,31 @@ export interface Service {
   short_description: string;
   long_description: string;
 }
+
+export enum Category {
+  crm = 'crm',
+  pos = 'pos',
+  erp = 'erp',
+  others = 'others',
+}
+
+export interface Project {
+  id: number;
+  documentId: string;
+  title: string;
+  description: string;
+  category: Category;
+  thumbnail: StrapiImage;
+  screenshots: StrapiImage[];
+  featured: boolean;
+}
+
+export interface Testimonial {
+  id: number;
+  documentId: string;
+  name: string;
+  role_or_company: string;
+  quote: string;
+  photo: StrapiImage;
+  rating: number;
+}
