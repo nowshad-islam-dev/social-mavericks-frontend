@@ -13,6 +13,13 @@ export interface StrapiImage {
   publishedAt: string;
 }
 
+export interface Pagination {
+  page: number;
+  pageSize: number;
+  pageCount: number;
+  total: number;
+}
+
 export interface GlobalSettings {
   id: number;
   documentId: string;
@@ -71,6 +78,7 @@ export interface Project {
   id: number;
   documentId: string;
   title: string;
+  slug: string;
   description: string;
   category: Category;
   thumbnail: StrapiImage;
@@ -86,4 +94,26 @@ export interface Testimonial {
   quote: string;
   photo: StrapiImage;
   rating: number;
+}
+
+export interface Blog {
+  id: number;
+  documentId: string;
+  category: BlogCategory;
+  title: string;
+  slug: string;
+  excerpt: string;
+  author_name: string;
+  content: string;
+  cover_image: StrapiImage;
+  seo_title: string;
+  seo_description: string;
+  publishedAt: string;
+}
+
+export interface BlogCategory {
+  id: number;
+  documentId: string;
+  name: string;
+  slug: string;
 }
