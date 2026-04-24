@@ -1,24 +1,16 @@
 import { getHomePage } from '@/lib/services/home';
-import { getGlobalSettings } from '@/lib/services/global';
-import Navbar from './components/Navbar';
 import Hero from './components/sections/HeroSection';
 import Service from './components/sections/ServiceSection';
-import Footer from './components/Footer';
 import Gallery from './components/sections/GallerySection';
 import Testimonial from './components/sections/TestimonialSection';
+import CTA from './components/sections/CTASection';
 
 export default async function Home() {
-  const [home, globals] = await Promise.all([
-    getHomePage(),
-    getGlobalSettings(),
-  ]);
-
-  const navbarProps = {
-    navigation_links: globals.navigation_links,
-  };
+  const home = await getHomePage();
 
   const heroProps = {
-    hero_title: home.hero_title,
+    hero_title_first: home.hero_title_first,
+    hero_title_second: home.hero_title_second,
     hero_subtitle: home.hero_subtitle,
     hero_cta_label: home.hero_cta_label,
     hero_background_image: home.hero_background_image,
@@ -37,23 +29,20 @@ export default async function Home() {
     testimonials_section_title: home.testimonials_section_title,
   };
 
-  const footerProps = {
-    navigation_links: globals.navigation_links,
-    social_links: globals.social_links,
-    site_name: globals.site_name,
-    footer_description: globals.footer_description,
-    contact_email: globals.contact_email,
-    contact_text: globals.contact_text,
+  const ctaProps = {
+    cta_title: home.cta_title,
+    cta_description: home.cta_description,
+    cta_button_label: home.cta_button_label,
+    cta_link: home.cta_link,
   };
 
   return (
     <div>
-      <Navbar {...navbarProps} />
       <Hero {...heroProps} />
       <Service {...serviceProps} />
       <Gallery {...galleryProps} />
       <Testimonial {...testimonialProps} />
-      <Footer {...footerProps} />
+      <CTA {...ctaProps} />
     </div>
   );
 }
