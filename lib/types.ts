@@ -23,6 +23,9 @@ export interface Pagination {
 export interface GlobalSettings {
   id: number;
   documentId: string;
+  contact_title_first: string;
+  contact_title_second: string;
+  contact_description: string;
   site_name: string;
   footer_description: string;
   navigation_links: {
@@ -37,9 +40,8 @@ export interface GlobalSettings {
   }[];
   contact_email: string;
   contact_text: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
+  address: string;
+  google_map_link: string;
 }
 
 export interface HomePage {
