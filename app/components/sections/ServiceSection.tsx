@@ -1,6 +1,7 @@
+import Image from 'next/image';
+import { IoMdCart } from 'react-icons/io';
+import { ImDatabase } from 'react-icons/im';
 import type { HomePage } from '@/lib/types';
-import { getServices } from '@/lib/services/services';
-import { ServiceCard } from '../common/ServiceCard';
 
 type ServiceProps = Pick<
   HomePage,
@@ -11,18 +12,93 @@ export default async function Service({
   services_section_title,
   services_section_description,
 }: ServiceProps) {
-  const services = await getServices();
-
   return (
-    <section className='bg-linear-to-br from-slate-50 to-slate-100 px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 lg:py-32 max-w-7xl mx-auto rounded-lg'>
-      <div className='space-y-4 md:space-y-6'>
-        <h3 className='title'>{services_section_title}</h3>
-        <p className='subtitle mb-20'>{services_section_description}</p>
-      </div>
-      <div className='my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-        {services.map((service) => (
-          <ServiceCard key={service.id} service={service} />
-        ))}
+    <section className='py-24 bg-surface-container-low'>
+      <div className='max-w-7xl mx-auto px-8'>
+        <div className='flex flex-col md:flex-row justify-between items-end mb-16 gap-8'>
+          <div className='max-w-2xl'>
+            <h2 className='text-3xl md:text-5xl font-extrabold text-primary mb-6'>
+              {services_section_title}
+            </h2>
+            <p className='text-on-surface-variant text-lg'>
+              {services_section_description}
+            </p>
+          </div>
+          <div className='hidden md:block w-32 h-px bg-outline-variant/30 mb-4'></div>
+        </div>
+
+        <div className='grid grid-cols-1 md:grid-cols-12 gap-6'>
+          {/* E-commerce */}
+          <div className='md:col-span-8 bg-surface-container-lowest p-12 rounded-lg flex flex-col md:flex-row gap-8 items-center border border-transparent hover:border-secondary/10 transition-all'>
+            <div className='w-full md:w-1/2 space-y-4'>
+              <span className='material-symbols-outlined text-4xl text-secondary'>
+                <IoMdCart />
+              </span>
+              <h3 className='text-2xl font-bold text-primary'>
+                High-Performance E-commerce
+              </h3>
+              <p className='text-on-surface-variant leading-relaxed'>
+                headless commerce solutions that prioritize lightning-fast load
+                times and conversion engineering for global retail brands.
+              </p>
+            </div>
+            <div className='w-full h-full md:w-1/2 relative bg-surface p-4 rounded border border-outline-variant/20'>
+              <Image
+                alt='E-commerce data'
+                className='rounded shadow-sm'
+                fill
+                src='https://plus.unsplash.com/premium_vector-1719829071224-9d289d2ab992?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+              />
+            </div>
+          </div>
+          {/* Automation */}
+          <div className='md:col-span-4 bg-primary text-on-primary p-12 rounded-lg flex flex-col justify-between'>
+            <span className='material-symbols-outlined text-4xl text-secondary'>
+              automation
+            </span>
+            <div className='mt-12'>
+              <h3 className='text-2xl font-bold mb-4'>
+                Intelligent Automation
+              </h3>
+              <p className='text-on-primary-container text-sm leading-relaxed'>
+                Eliminate bottlenecks with custom workflow logic and
+                machine-learning integrations.
+              </p>
+            </div>
+          </div>
+          {/* ERP */}
+          <div className='md:col-span-4 bg-surface-container-lowest p-12 rounded-lg border border-transparent hover:border-secondary/10 transition-all flex flex-col justify-between'>
+            <span className='material-symbols-outlined text-4xl text-secondary'>
+              <ImDatabase />
+            </span>
+            <div className='mt-8'>
+              <h3 className='text-2xl font-bold text-primary mb-4'>
+                Enterprise Resource Planning
+              </h3>
+              <p className='text-on-surface-variant text-sm leading-relaxed'>
+                Centralized technical architecture for complex organizational
+                logistics and data ledgering.
+              </p>
+            </div>
+          </div>
+          {/* Analytics */}
+          <div className='md:col-span-8 bg-surface-container-highest p-12 rounded-lg flex items-center justify-between overflow-hidden'>
+            <div className='max-w-xs'>
+              <h3 className='text-2xl font-bold text-primary mb-4'>
+                Precision Analytics
+              </h3>
+              <p className='text-on-surface-variant text-sm leading-relaxed'>
+                Deep-dive reporting that treats data like a blueprint, ensuring
+                every insight is actionable and verified.
+              </p>
+            </div>
+            <div className='w-48 h-48 rotate-12 opacity-20'>
+              <span className='material-symbols-outlined text-[10rem] text-primary'>
+                monitoring
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

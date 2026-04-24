@@ -45,7 +45,8 @@ export interface GlobalSettings {
 export interface HomePage {
   id: number;
   documentId: string;
-  hero_title: string;
+  hero_title_first: string;
+  hero_title_second: string;
   hero_subtitle: string;
   hero_cta_label: string;
   hero_background_image: StrapiImage;
@@ -54,6 +55,7 @@ export interface HomePage {
   gallery_section_title: string;
   testimonials_section_title: string;
   cta_title: string;
+  cta_description: string;
   cta_button_label: string;
   cta_link: string;
 }
