@@ -62,16 +62,61 @@ export interface HomePage {
   cta_link: string;
 }
 
+export interface DifferencePoint {
+  id: number;
+  title: string;
+  description: string;
+}
+
+export interface AboutPage {
+  id: number;
+  documentId: string;
+  headline: string;
+  description: string;
+  tech_stack_logos: StrapiImage[];
+  difference_points: DifferencePoint[];
+}
+
+export enum Pricing {
+  'Retainer' = 'Retainer',
+  'Fixed' = 'Fixed',
+  'Milestone-based' = 'Milestone-based',
+}
+
 export interface Service {
   id: number;
   documentId: string;
-  icon: StrapiImage;
   title: string;
+  slug: string;
   short_description: string;
   long_description: string;
+  order: number;
+  track: Track;
+  pricing: Pricing;
+  tags: string[];
+  is_differentiator: boolean;
 }
 
-export enum Category {
+export interface Track {
+  id: number;
+  documentId: string;
+  label: string;
+  tagline: string;
+  slug: string;
+  badge: string;
+  description: string;
+  order: number;
+  services: Service[];
+}
+export interface ServicePopulated extends Omit<Service, 'track'> {
+  track: Track;
+}
+
+export interface TrackPopulated extends Omit<Track, 'services'> {
+  services: ServicePopulated[];
+}
+
+export enum ProjectCategory {
   crm = 'crm',
   pos = 'pos',
   erp = 'erp',
@@ -84,7 +129,7 @@ export interface Project {
   title: string;
   slug: string;
   description: string;
-  category: Category;
+  category: ProjectCategory;
   thumbnail: StrapiImage;
   screenshots: StrapiImage[];
   featured: boolean;
