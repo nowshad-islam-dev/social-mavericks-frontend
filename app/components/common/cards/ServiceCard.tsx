@@ -1,0 +1,83 @@
+import { FaChartLine } from 'react-icons/fa6';
+import { BsTools } from 'react-icons/bs';
+import type { Service } from '@/lib/types';
+
+interface ServiceCardProps {
+  service: Service;
+  isGrowth: boolean;
+}
+
+function PricingBadge({ pricing }: { pricing: Service['pricing'] }) {
+  return (
+    <span className='inline-flex items-center rounded-full border border-outline-variant bg-surface-container-low px-2.5 py-0.5 font-label text-xs text-on-surface-variant'>
+      {pricing}
+    </span>
+  );
+}
+
+function Tag({ label }: { label: string }) {
+  return (
+    <span className='inline-flex items-center rounded-full border border-outline-variant bg-surface-container px-2.5 py-0.5 font-label text-xs text-on-surface-variant'>
+      {label}
+    </span>
+  );
+}
+
+export const ServiceCard: React.FC<ServiceCardProps> = ({
+  service,
+  isGrowth,
+}: ServiceCardProps) => {
+  return (
+    <div
+      className={[
+        'group relative flex flex-col gap-4 rounded-xl border bg-surface-container-lowest p-6',
+        'transition-colors duration-200 ease-in-out',
+        service.is_differentiator
+          ? 'border-secondary shadow-sm'
+          : 'border-outline-variant hover:border-outline hover:shadow-sm',
+      ].join(' ')}
+    >
+      {service.is_differentiator && (
+        <div className='absolute -top-3 left-5'>
+          <span className='inline-flex items-center rounded-full bg-secondary px-3 py-0.5 font-label text-xs font-medium text-on-secondary'>
+            Differentiator
+          </span>
+        </div>
+      )}
+
+      <div
+        className={[
+          'flex h-9 w-9 items-center justify-center rounded-lg',
+          isGrowth ? 'bg-primary-fixed' : 'bg-secondary-fixed',
+        ].join(' ')}
+      >
+        {isGrowth ? <FaChartLine /> : <BsTools />}
+      </div>
+
+      <div className='flex flex-col gap-2'>
+        <h3 className='font-headline text-base font-semibold text-on-surface'>
+          {service.title}
+        </h3>
+        <p className='font-body text-sm leading-relaxed text-on-surface-variant'>
+          {service.short_description}
+        </p>
+      </div>
+
+      <div className='mt-auto flex flex-col gap-3 pt-2'>
+        {service.tags?.length > 0 && (
+          <div className='flex flex-wrap gap-1.5'>
+            {service.tags.map((tag) => (
+              <Tag key={tag} label={tag} />
+            ))}
+          </div>
+        )}
+        <div className='flex items-center justify-between border-t border-outline-variant pt-3'>
+          <PricingBadge pricing={service.pricing} />
+          <span className='font-label text-xs font-medium text-on-primary-container transition-colors duration-150 group-hover:text-on-surface'>
+            Learn more →
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+};
