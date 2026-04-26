@@ -1,13 +1,13 @@
 import { fetchAPI } from '@/lib/api';
 import { normalizeCollection } from '../normalizer';
-import type { TrackPopulated } from '../types';
+import type { Track } from '../types';
 
-export async function getTracks(): Promise<TrackPopulated[]> {
+export async function getTracks(): Promise<Track[]> {
   try {
     const res = await fetchAPI(
       '/tracks?populate[services][populate]=*&sort=order:asc',
     );
-    const tracks: TrackPopulated[] = normalizeCollection<TrackPopulated>(res);
+    const tracks: Track[] = normalizeCollection<Track>(res);
 
     return tracks.map((track) => ({
       ...track,

@@ -1,14 +1,16 @@
 import Image from 'next/image';
 import { getProjects } from '@/lib/services/projects';
-import { getImageUrl } from '@/lib/normalizer';
+import { getImageUrl, normalizeCollection } from '@/lib/normalizer';
 import type { HomePage } from '@/lib/types';
 
 type GalleryProps = Pick<HomePage, 'gallery_section_title'>;
 
 export default async function Gallery({ gallery_section_title }: GalleryProps) {
-  const projects = await getProjects();
-  const featuredProjects =
-    projects.filter((project) => project.featured).slice(0, 3) || [];
+  const projects = normalizeCollection(await getProjects());
+
+  const featuredProjects = projects
+    .filter((project) => project.featured)
+    .slice(0, 3);
 
   return (
     <section className='py-24 bg-surface'>

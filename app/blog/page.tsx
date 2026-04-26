@@ -2,23 +2,24 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { GoSearch } from 'react-icons/go';
 import { getBlogPosts, getBlogCategories } from '@/lib/services/blogs';
-import { getImageUrl } from '@/lib/normalizer';
-import { BlogCard } from '../components/common/BlogCard';
-import { PaginationCard } from '../components/common/PaginationCard';
+import { getImageUrl, normalizeCollection } from '@/lib/normalizer';
+import { BlogCard } from '../components/common/cards/BlogCard';
+import { PaginationCard } from '../components/common/cards/PaginationCard';
 
 export default async function Blog() {
-  const [blogsData, categories] = await Promise.all([
+  const [blogsData, categoriesData] = await Promise.all([
     getBlogPosts(),
     getBlogCategories(),
   ]);
 
-  const blogs = blogsData.data;
+  const blogs = normalizeCollection(blogsData);
+  const categories = normalizeCollection(categoriesData);
   const { pagination } = blogsData.meta;
 
   return (
     <div className='px-6 my-24 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-16 '>
-      {/* Featured Article */}
       <div className='lg:col-span-8 space-y-16'>
+        {/* Featured Article */}
         <article className='group cursor-pointer'>
           <div className='relative overflow-hidden aspect-video mb-8'>
             <Image
@@ -130,7 +131,7 @@ export default async function Blog() {
         </div>
 
         {/* Newsletter Signup */}
-        <div className='p-8 border border-outline-variant/20'>
+        {/* <div className='p-8 border border-outline-variant/20'>
           <h4 className='text-sm font-bold text-primary uppercase tracking-widest mb-4'>
             Newsletter
           </h4>
@@ -148,7 +149,7 @@ export default async function Blog() {
               Subscribe Now
             </button>
           </div>
-        </div>
+        </div> */}
       </aside>
     </div>
   );

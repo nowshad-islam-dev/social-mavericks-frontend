@@ -1,10 +1,8 @@
-import { fetchAPI } from '../api';
-import { normalizeResponse } from '../normalizer';
+import { fetchCollection } from '../api';
 import { endpoints } from '../endpoints';
-import { Testimonial } from '../types';
+import type { Testimonial } from '../types';
 
-export async function getTestimonials(): Promise<Testimonial[]> {
-  const data = await fetchAPI(endpoints.testimonials);
-  const normalized = normalizeResponse(data) as Testimonial[] | null;
-  return normalized || [];
+export async function getTestimonials() {
+  const result = await fetchCollection<Testimonial>(endpoints.testimonials);
+  return result;
 }

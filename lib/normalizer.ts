@@ -12,3 +12,15 @@ export function normalizeResponse<T>(
 ): T | null {
   return res?.data || null;
 }
+
+export function normalizeCollection<T>(
+  res: { data: T[] } | null | undefined,
+): T[] {
+  return res?.data ?? [];
+}
+
+export function normalizeSingle<T>(
+  res: { data: T } | null | undefined,
+): T | null {
+  return res?.data ?? null;
+}

@@ -30,3 +30,8 @@ export async function fetchCollection<T>(
   const res = await fetchAPI(endpoint);
   return res as StrapiResponse<T>;
 }
+
+export async function fetchSingle<T>(endpoint: string): Promise<T> {
+  const res = await fetchAPI(endpoint);
+  return res.data as T;
+}

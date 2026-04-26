@@ -1,13 +1,14 @@
-import { getTestimonials } from '@/lib/services/testimonials';
 import { MdVerified } from 'react-icons/md';
-import type { HomePage } from '@/lib/types';
+import { getTestimonials } from '@/lib/services/testimonials';
+import { normalizeCollection } from '@/lib/normalizer';
+import type { HomePage, Testimonial } from '@/lib/types';
 
 type TestimonialProps = Pick<HomePage, 'testimonials_section_title'>;
 
 export default async function Testimonial({
   testimonials_section_title,
 }: TestimonialProps) {
-  const testimonials = (await getTestimonials()).slice(0, 2) || [];
+  const testimonials = normalizeCollection(await getTestimonials()).slice(0, 2);
 
   return (
     <section className='py-24 bg-surface-container-low'>

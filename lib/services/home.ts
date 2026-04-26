@@ -1,13 +1,11 @@
-import { fetchAPI } from '../api';
-import { normalizeResponse } from '../normalizer';
+import { fetchSingle } from '../api';
 import { endpoints } from '../endpoints';
-import { HomePage } from '../types';
+import type { HomePage } from '../types';
 
 export async function getHomePage(): Promise<HomePage> {
-  const result = await fetchAPI(endpoints.home);
-  const normalized = normalizeResponse(result) as HomePage | null;
-  if (!normalized) {
+  const result = await fetchSingle<HomePage>(endpoints.home);
+  if (!result) {
     throw new Error('Home page data not found');
   }
-  return normalized;
+  return result;
 }

@@ -1,13 +1,11 @@
-import { fetchAPI } from '../api';
-import { normalizeResponse } from '../normalizer';
+import { fetchSingle } from '../api';
 import { endpoints } from '../endpoints';
-import { GlobalSettings } from '../types';
+import type { GlobalSettings } from '../types';
 
 export async function getGlobalSettings(): Promise<GlobalSettings> {
-  const result = await fetchAPI(endpoints.global);
-  const normalized = normalizeResponse(result) as GlobalSettings | null;
-  if (!normalized) {
+  const result = await fetchSingle<GlobalSettings>(endpoints.global);
+  if (!result) {
     throw new Error('Global settings not found');
   }
-  return normalized;
+  return result;
 }

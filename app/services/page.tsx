@@ -6,7 +6,7 @@ import { DifferencePointCard } from '../components/common/cards/DifferencePointC
 import { EmptyState } from '../components/EmptyState';
 import { getTracks } from '@/lib/services/tracks';
 import { getDifferencePoints } from '@/lib/services/about';
-import type { TrackPopulated } from '@/lib/types';
+import type { Track } from '@/lib/types';
 
 export const metadata: Metadata = {
   title: 'Services — Social Mavericks',
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'AI-powered software development and digital growth systems for e-commerce businesses. We build and grow — same team, full picture.',
 };
 
-function TrackHeader({ track }: { track: TrackPopulated }) {
+function TrackHeader({ track }: { track: Track }) {
   const isGrowth = track.slug === 'growth';
 
   return (
