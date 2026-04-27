@@ -1,7 +1,7 @@
 import Image from 'next/image';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { fetchSingle } from '@/lib/api';
 import { getImageUrl } from '@/lib/normalizer';
-import { ContentRenderer } from '../../components/common/ContentRenderer';
 import type { Blog } from '@/lib/types';
 
 export default async function SingleBlogPost(props: {
@@ -31,7 +31,7 @@ export default async function SingleBlogPost(props: {
           </span>
         </p>
         <div className='text-justify prose prose-sm sm:prose-base max-w-none'>
-          <ContentRenderer content={blog.content} />
+          <BlocksRenderer content={blog.content} />
         </div>
       </div>
     </main>
