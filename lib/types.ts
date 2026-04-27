@@ -130,12 +130,26 @@ export interface BlogCategory extends StrapiEntity {
   slug: string;
 }
 
+export type StrapiRichText = Array<{
+  type: string;
+  children?: Array<{
+    text: string;
+    type?: string;
+    bold?: boolean;
+    italic?: boolean;
+    underline?: boolean;
+    strikethrough?: boolean;
+    code?: boolean;
+    url?: string;
+  }>;
+}>;
+
 export interface Blog extends StrapiEntity, StrapiTimestamps {
   title: string;
   slug: string;
   excerpt: string;
   author_name: string;
-  content: string;
+  content: StrapiRichText;
   cover_image: StrapiImage;
   category: BlogCategory;
   seo_title: string;

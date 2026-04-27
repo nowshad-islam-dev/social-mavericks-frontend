@@ -48,13 +48,13 @@ export default async function Blog() {
               {blogs[0].excerpt}
             </p>
             <div className='pt-2'>
-              <a
+              <Link
                 className='inline-flex items-center gap-2 text-secondary font-bold group/link'
-                href='#'
+                href={`/blog/${blogs[0].documentId}`}
               >
                 Read Full Article
                 <span className='w-6 h-0.5 bg-secondary transition-all duration-300 group-hover/link:w-10'></span>
-              </a>
+              </Link>
             </div>
           </div>
         </article>
