@@ -29,7 +29,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ blog }: BlogCardProps) => {
       </p>
       <Link
         className='text-xs font-black uppercase tracking-tighter border-b-2 border-primary pb-0.5'
-        href={`/blog/${blog.documentId}`}
+        href={`/blog/${blog.slug}`}
       >
         Read More
       </Link>

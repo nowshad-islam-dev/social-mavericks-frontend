@@ -50,7 +50,7 @@ export default async function Blog() {
             <div className='pt-2'>
               <Link
                 className='inline-flex items-center gap-2 text-secondary font-bold group/link'
-                href={`/blog/${blogs[0].documentId}`}
+                href={`/blog/${blogs[0].slug}`}
               >
                 Read Full Article
                 <span className='w-6 h-0.5 bg-secondary transition-all duration-300 group-hover/link:w-10'></span>
