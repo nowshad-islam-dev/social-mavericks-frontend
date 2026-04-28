@@ -95,16 +95,23 @@ export interface Track extends StrapiEntity {
   services: Service[];
 }
 
+export interface FaqItem {
+  id: number;
+  question: string;
+  answer: string;
+}
+
 export interface Service extends StrapiEntity {
   title: string;
   slug: string;
   short_description: string;
-  long_description: string;
+  long_description: BlocksContent;
   order: number;
   pricing: Pricing;
   tags: string[];
   is_differentiator: boolean;
   track: Track;
+  faqs: FaqItem[];
 }
 
 export type ProjectCategory = 'crm' | 'pos' | 'erp' | 'others';

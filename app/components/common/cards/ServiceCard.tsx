@@ -1,26 +1,13 @@
+import Link from 'next/link';
 import { FaChartLine } from 'react-icons/fa6';
 import { BsTools } from 'react-icons/bs';
+import { FaArrowRightLong } from 'react-icons/fa6';
+import { Tag, PricingBadge } from '../ui/Badge';
 import type { Service } from '@/lib/types';
 
 interface ServiceCardProps {
   service: Service;
   isGrowth: boolean;
-}
-
-function PricingBadge({ pricing }: { pricing: Service['pricing'] }) {
-  return (
-    <span className='inline-flex items-center rounded-full border border-outline-variant bg-surface-container-low px-2.5 py-0.5 font-label text-xs text-on-surface-variant'>
-      {pricing}
-    </span>
-  );
-}
-
-function Tag({ label }: { label: string }) {
-  return (
-    <span className='inline-flex items-center rounded-full border border-outline-variant bg-surface-container px-2.5 py-0.5 font-label text-xs text-on-surface-variant'>
-      {label}
-    </span>
-  );
 }
 
 export const ServiceCard: React.FC<ServiceCardProps> = ({
@@ -73,9 +60,11 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
         )}
         <div className='flex items-center justify-between border-t border-outline-variant pt-3'>
           <PricingBadge pricing={service.pricing} />
-          <span className='font-label text-xs font-medium text-on-primary-container transition-colors duration-150 group-hover:text-on-surface'>
-            Learn more →
-          </span>
+          <Link href={`/services/${service.slug}`}>
+            <span className='font-label text-xs font-medium text-on-primary-container transition-colors duration-150 group-hover:text-on-surface'>
+              Learn more <FaArrowRightLong className='inline' />
+            </span>
+          </Link>
         </div>
       </div>
     </div>

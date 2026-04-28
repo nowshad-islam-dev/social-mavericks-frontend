@@ -81,7 +81,7 @@ export default async function ServicesPage() {
   ]);
 
   return (
-    <main className='min-h-screen my-28 bg-background'>
+    <main className='min-h-screen mt-24 bg-background'>
       <div className='mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8'>
         {/* ── Page header ── */}
         <section className='mb-14'>
