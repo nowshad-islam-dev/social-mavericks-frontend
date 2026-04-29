@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Blog } from '@/lib/types';
 import { getImageUrl } from '@/lib/normalizer';
+import type { Blog } from '@/lib/types';
 
 interface BlogCardProps {
   blog: Blog;

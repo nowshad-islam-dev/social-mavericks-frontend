@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { FaChartLine } from 'react-icons/fa6';
+import classNames from 'classnames';
+import { FaChartLine, FaArrowRightLong } from 'react-icons/fa6';
 import { BsTools } from 'react-icons/bs';
-import { FaArrowRightLong } from 'react-icons/fa6';
-import { Tag, PricingBadge } from '../ui/Badge';
+import { Tag, PricingBadge } from '@components/common/ui/Badge';
 import type { Service } from '@/lib/types';
 
 interface ServiceCardProps {
@@ -16,13 +16,15 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
 }: ServiceCardProps) => {
   return (
     <div
-      className={[
+      className={classNames(
         'group relative flex flex-col gap-4 rounded-xl border bg-surface-container-lowest p-6',
         'transition-colors duration-200 ease-in-out',
-        service.is_differentiator
-          ? 'border-secondary shadow-sm'
-          : 'border-outline-variant hover:border-outline hover:shadow-sm',
-      ].join(' ')}
+        {
+          'border-secondary shadow-sm': service.is_differentiator,
+          'border-outline-variant hover:border-outline hover:shadow-sm':
+            !service.is_differentiator,
+        },
+      )}
     >
       {service.is_differentiator && (
         <div className='absolute -top-3 left-5'>
@@ -33,10 +35,13 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       )}
 
       <div
-        className={[
+        className={classNames(
           'flex h-9 w-9 items-center justify-center rounded-lg',
-          isGrowth ? 'bg-primary-fixed' : 'bg-secondary-fixed',
-        ].join(' ')}
+          {
+            'bg-primary-fixed': isGrowth,
+            'bg-secondary-fixed': !isGrowth,
+          },
+        )}
       >
         {isGrowth ? <FaChartLine /> : <BsTools />}
       </div>

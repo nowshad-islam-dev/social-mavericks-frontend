@@ -8,7 +8,7 @@ import { FaLocationDot } from 'react-icons/fa6';
 import { TfiEmail } from 'react-icons/tfi';
 import { getGlobalSettings } from '@/lib/services/global';
 
-export default async function page() {
+export default async function ContactPage() {
   const globals = await getGlobalSettings();
   const {
     contact_title_first,

@@ -1,5 +1,5 @@
-import type { Pagination } from '@/lib/types';
 import { FaLongArrowAltRight } from 'react-icons/fa';
+import type { Pagination } from '@/lib/types';
 
 interface PaginationProps {
   pagination: Pagination;
