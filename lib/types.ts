@@ -114,7 +114,15 @@ export interface Service extends StrapiEntity {
   faqs: FaqItem[];
 }
 
-export type ProjectCategory = 'crm' | 'pos' | 'erp' | 'others';
+export type ProjectCategory =
+  | 'custom-software'
+  | 'ecommerce'
+  | 'crm'
+  | 'pos'
+  | 'erp'
+  | 'others'
+  | 'cms'
+  | 'all';
 
 export interface Project extends StrapiEntity {
   title: string;
@@ -124,6 +132,10 @@ export interface Project extends StrapiEntity {
   thumbnail: StrapiImage;
   screenshots: StrapiImage[];
   featured: boolean;
+  result: string;
+  client_industry: string;
+  tech_stack: string[];
+  live_url: string;
 }
 
 export interface Testimonial extends StrapiEntity {

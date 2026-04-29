@@ -13,3 +13,11 @@ export const PricingBadge = ({ pricing }: { pricing: string }) => {
     </span>
   );
 };
+
+export const CategoryBadge = ({ category }: { category: string }) => {
+  return (
+    <span className='inline-flex items-center rounded-full bg-secondary px-2.5 py-0.5 font-label text-xs font-medium text-on-secondary'>
+      {category}
+    </span>
+  );
+};
