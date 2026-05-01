@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import classNames from 'classnames';
 import { MdMenu } from 'react-icons/md';
+import { CalendlyButton } from './common/ui/Button';
 import type { GlobalSettings } from '@/lib/types';
 
 type NavbarProps = Pick<GlobalSettings, 'navigation_links'>;
@@ -49,9 +50,11 @@ export default function Navbar({ navigation_links }: NavbarProps) {
           ))}
         </div>
         <div className='hidden items-center gap-4 md:flex'>
-          <button className='bg-secondary text-on-secondary px-6 py-2 rounded-lg font-semibold hover:scale-[1.02] transition-transform active:scale-95 duration-100'>
-            Get a Quote
-          </button>
+          <CalendlyButton
+            label='Book A Call'
+            url='https://calendly.com/socialmavericksdigital/30min'
+            icon='phone'
+          />
         </div>
 
         {/* Mobile Menu Button */}
@@ -74,12 +77,11 @@ export default function Navbar({ navigation_links }: NavbarProps) {
               </li>
             ))}
           </ul>
-          <button
-            className='bg-secondary text-on-secondary px-6 py-2 rounded-lg font-semibold hover:scale-[1.02] transition-transform active:scale-95 duration-100'
-            onClick={() => setIsOpen(false)}
-          >
-            Get a Quote
-          </button>
+          <CalendlyButton
+            label='Book A Call'
+            url='https://calendly.com/socialmavericksdigital/30min'
+            icon='phone'
+          />
         </div>
       )}
     </nav>

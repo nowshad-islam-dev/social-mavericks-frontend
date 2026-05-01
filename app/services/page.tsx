@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import classNames from 'classnames';
-import { FaLongArrowAltRight } from 'react-icons/fa';
-import { ServiceCard } from '../components/common/cards/ServiceCard';
-import { DifferencePointCard } from '../components/common/cards/DifferencePointCard';
-import { EmptyState } from '../components/EmptyState';
+import { ServiceCard } from '@components/common/cards/ServiceCard';
+import { DifferencePointCard } from '@components/common/cards/DifferencePointCard';
+import { EmptyState } from '@components/EmptyState';
+import { CalendlyButton } from '@components/common/ui/Button';
 import { getTracks } from '@/lib/services/tracks';
 import { getDifferencePoints } from '@/lib/services/about';
 import type { Track } from '@/lib/types';
@@ -172,19 +173,13 @@ export default async function ServicesPage() {
                 </p>
               </div>
               <div className='flex shrink-0 flex-wrap gap-3'>
-                <a
-                  href='/contact'
-                  className='group inline-flex items-center gap-2 rounded-lg bg-secondary px-5 py-2.5 font-label text-sm font-medium text-on-primary transition-opacity duration-150 hover:opacity-90'
-                >
-                  Book a discovery call
-                  <FaLongArrowAltRight />
-                </a>
-                <a
-                  href='/work'
+                <CalendlyButton url='https://calendly.com/socialmavericksdigital/30min' />
+                <Link
+                  href='/gallery'
                   className='inline-flex items-center gap-2 rounded-lg border border-outline-variant bg-surface-container-lowest px-5 py-2.5 font-label text-sm font-medium text-on-surface transition-colors duration-150 hover:border-outline'
                 >
                   See our work
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from './components/Navbar';
@@ -33,10 +34,22 @@ export default async function RootLayout({
 
   return (
     <html lang='en' className={`${inter.className} h-full antialiased`}>
+      <head>
+        <link
+          href='https://assets.calendly.com/assets/external/widget.css'
+          rel='stylesheet'
+        ></link>
+      </head>
       <body className='min-h-full flex flex-col'>
         <Navbar {...navbarProps} />
         {children}
         <Footer {...footerProps} />
+        <Script
+          src='https://assets.calendly.com/assets/external/widget.js'
+          type='text/javascript'
+          async
+          strategy='lazyOnload'
+        ></Script>
       </body>
     </html>
   );

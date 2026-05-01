@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { FaArrowRightLong } from 'react-icons/fa6';
 import classNames from 'classnames';
 import {
   ProjectCard,
   FeaturedProjectCard,
 } from '@components/common/cards/ProjectCard';
 import { EmptyState } from '@components/EmptyState';
+import { CalendlyButton } from '@components/common/ui/Button';
 import { getProjectsByCategory } from '@/lib/services/projects';
 import type { ProjectCategory } from '@/lib/types';
 
@@ -152,13 +152,7 @@ export default async function GalleryPage({
                 </p>
               </div>
               <div className='flex shrink-0 flex-wrap gap-3'>
-                <Link
-                  href='/contact'
-                  className='group inline-flex items-center gap-2 rounded-lg bg-secondary px-5 py-2.5 font-label text-sm font-medium text-on-primary transition-opacity duration-150 hover:opacity-90'
-                >
-                  Start a conversation
-                  <FaArrowRightLong />
-                </Link>
+                <CalendlyButton url='https://calendly.com/socialmavericksdigital/30min' />
                 <Link
                   href='/services'
                   className='inline-flex items-center gap-2 rounded-lg border border-outline-variant bg-surface-container-lowest px-5 py-2.5 font-label text-sm font-medium text-on-surface transition-colors duration-150 hover:border-outline'

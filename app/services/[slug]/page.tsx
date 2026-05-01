@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
-import { FaLongArrowAltRight } from 'react-icons/fa';
 import { FaqAccordion } from '@components/common/ui/Accordion';
 import { Tag, PricingBadge } from '@components/common/ui/Badge';
 import { TrackBreadcrumb } from '@components/common/ui/Breadcrumb';
+import { CalendlyButton } from '@components/common/ui/Button';
 import { fetchAPI } from '@/lib/api';
 import { getServiceBySlug } from '@/lib/services/services';
 
@@ -116,13 +116,7 @@ export default async function ServiceDetailPage({
               plan, not a sales pitch.
             </p>
             <div className='flex flex-wrap gap-3'>
-              <a
-                href='/contact'
-                className='group inline-flex items-center gap-2 rounded-lg bg-secondary px-5 py-2.5 font-label text-sm font-medium text-on-primary transition-opacity duration-150 hover:opacity-90'
-              >
-                Book a discovery call
-                <FaLongArrowAltRight />
-              </a>
+              <CalendlyButton url='https://calendly.com/socialmavericksdigital/30min' />
               <Link
                 href='/services'
                 className='inline-flex items-center gap-2 rounded-lg border border-outline-variant bg-surface-container-lowest px-5 py-2.5 font-label text-sm font-medium text-on-surface transition-colors duration-150 hover:border-outline'
