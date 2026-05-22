@@ -10,8 +10,15 @@ import { getGlobalSettings } from '@/lib/services/global';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Social Mavericks - Social Media Agency',
-  description: 'Professional social media marketing and management services',
+  title: 'Social Mavericks — AI-Powered Software & Digital Growth',
+  description:
+    'We build and grow digital businesses with AI at the core. Custom e-commerce, ERP, CRM, and full-funnel digital operations.',
+  openGraph: {
+    title: 'Social Mavericks — AI-Powered Software & Digital Growth',
+    description:
+      'We build and grow digital businesses with AI at the core. Custom e-commerce, ERP, CRM, and full-funnel digital operations.',
+    url: 'https://www.socialmavdigital.com',
+  },
 };
 
 export default async function RootLayout({

@@ -1,10 +1,16 @@
-import type { GlobalSettings } from '@/lib/types';
+import Link from 'next/link';
 import { TfiEmail } from 'react-icons/tfi';
 import { FaPhoneAlt } from 'react-icons/fa';
+import type { GlobalSettings } from '@/lib/types';
 
 type FooterProps = Pick<
   GlobalSettings,
-  'navigation_links' | 'social_links' | 'site_name' | 'footer_description' | 'contact_email' | 'contact_text'
+  | 'navigation_links'
+  | 'social_links'
+  | 'site_name'
+  | 'footer_description'
+  | 'contact_email'
+  | 'contact_text'
 >;
 
 export default function Footer({
@@ -40,9 +46,9 @@ export default function Footer({
             <ul className='space-y-1 md:space-y-2'>
               {navigationLinks.map((link) => (
                 <li key={link.id}>
-                  <a href={link.url} className='text-xs navlink'>
+                  <Link href={link.url} className='text-xs'>
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -54,15 +60,15 @@ export default function Footer({
               Legal
             </h4>
             <ul>
-              <li className='text-xs navlink'>
-                <a href='#terms' className='text-xs navlink'>
+              <li className='text-xs'>
+                <Link href='/terms' className='text-xs'>
                   Terms of Service
-                </a>
+                </Link>
               </li>
-              <li className='text-xs navlink'>
-                <a href='#policy' className='text-xs navlink'>
-                  Policy
-                </a>
+              <li className='text-xs'>
+                <Link href='/privacy' className='text-xs'>
+                  Privacy Policy
+                </Link>
               </li>
             </ul>
           </div>
@@ -109,8 +115,7 @@ export default function Footer({
         {/* Copyright */}
         <div className='border-t border-gray-200 pt-6'>
           <p className='text-xs text-tertiary text-center'>
-            &copy; {new Date().getFullYear()} {site_name}. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} {site_name}. All rights reserved.
           </p>
         </div>
       </div>

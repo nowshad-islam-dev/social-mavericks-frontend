@@ -1,7 +1,7 @@
 import { REVALIDATE_TIME } from './constants';
 import { Pagination } from './types';
 
-const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
+const API_URL = process.env.STRAPI_URL;
 
 type StrapiResponse<T> = {
   data: T[];
@@ -11,12 +11,15 @@ type StrapiResponse<T> = {
 };
 
 if (!API_URL) {
-  throw new Error('NEXT_PUBLIC_STRAPI_URL environment variable is not set');
+  throw new Error('STRAPI_URL environment variable is not set');
 }
 
 export async function fetchAPI(path: string) {
   const res = await fetch(`${API_URL}/api${path}`, {
     next: { revalidate: REVALIDATE_TIME }, // ISR
+    headers: {
+      Authorization: `Bearer ${process.env.API_TOKEN}`,
+    },
   });
   if (!res.ok) {
     throw new Error('Failed to fetch');

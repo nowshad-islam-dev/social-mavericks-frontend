@@ -1,18 +1,22 @@
 import type { NextConfig } from 'next';
+// eslint-disable-next-line
+const withMDX = require('@next/mdx')();
 
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '1337',
-        pathname: '/uploads/**',
+        protocol: 'https',
+        hostname: 'your-railway-url.up.railway.app',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
       },
     ],
     dangerouslyAllowSVG: true,
-    unoptimized: true,
   },
+  pageExtensions: ['js', 'ts', 'jsx', 'tsx', 'mdx'],
 };
 
-export default nextConfig;
+export default withMDX(nextConfig);

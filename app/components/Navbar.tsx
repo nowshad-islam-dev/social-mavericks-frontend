@@ -23,11 +23,10 @@ export default function Navbar({ navigation_links }: NavbarProps) {
         <div className='relative h-24 w-24'>
           <Link href='/'>
             <Image
-              src='/social-mavericks-web-logo.png'
+              src='/nav-logo.svg'
               alt='Logo'
               fill
-              className='object-contain border border-secondary/10 hover:border-secondary/30 rounded-[50%]
-            transition-border duration-300'
+              className='object-contain'
             />
           </Link>
         </div>

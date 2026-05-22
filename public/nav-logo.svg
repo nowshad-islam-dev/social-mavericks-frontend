@@ -1,0 +1,11 @@
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Social Mavericks — Icon Mark Light</title>
+  <desc>Social Mavericks icon mark on light background</desc>
+  <g transform="translate(12, 18)">
+    <rect x="0" y="22" width="11" height="24" rx="2.5" fill="#c8a96e"/>
+    <rect x="15" y="12" width="11" height="34" rx="2.5" fill="#c8a96e"/>
+    <rect x="30" y="2" width="11" height="44" rx="2.5" fill="#1a1a1a"/>
+    <line x1="34" y1="2" x2="53" y2="-13" stroke="#c8a96e" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="53" cy="-13" r="4.5" fill="#c8a96e"/>
+  </g>
+</svg>
