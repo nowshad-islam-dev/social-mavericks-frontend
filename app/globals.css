@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Legal page prose styles */
+.legal-prose h2 {
+  @apply font-headline text-xl font-semibold text-on-surface mt-10 mb-4;
+}
+
+.legal-prose h3 {
+  @apply font-headline text-base font-semibold text-on-surface mt-6 mb-3;
+}
+
+.legal-prose p {
+  @apply font-body text-sm leading-relaxed text-on-surface-variant mb-4;
+}
+
+.legal-prose ul {
+  @apply ml-5 list-disc space-y-2 mb-4;
+}
+
+.legal-prose ul li {
+  @apply font-body text-sm leading-relaxed text-on-surface-variant;
+}
+
+.legal-prose a {
+  @apply text-secondary underline underline-offset-2;
+}
+
+.legal-prose strong {
+  @apply font-semibold text-on-surface;
+}
