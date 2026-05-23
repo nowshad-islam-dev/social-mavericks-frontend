@@ -109,7 +109,7 @@ export default async function ServiceDetailPage({
               plan, not a sales pitch.
             </p>
             <div className='flex flex-wrap gap-3'>
-              <CalendlyButton url='https://calendly.com/socialmavericksdigital/30min' />
+              <CalendlyButton />
               <Link
                 href='/services'
                 className='inline-flex items-center gap-2 rounded-lg border border-outline-variant bg-surface-container-lowest px-5 py-2.5 font-label text-sm font-medium text-on-surface transition-colors duration-150 hover:border-outline'

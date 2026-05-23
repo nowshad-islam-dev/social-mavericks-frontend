@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CalendlyButton } from '@components/common/ui/Button';
 import type { HomePage } from '@/lib/types';
 
 type CTAprops = Pick<
@@ -23,14 +24,7 @@ export default function CTA({
             <p className='text-on-primary-container text-lg mb-10 leading-relaxed'>
               {cta_description}
             </p>
-            <Link
-              href={cta_link || '#'}
-              className='inline-block mb-4 md:mb-0 mr-4'
-            >
-              <button className='bg-secondary text-on-secondary px-10 py-5 rounded-lg font-bold text-xl hover:scale-[1.02] transition-transform active:scale-95 duration-100 shadow-xl shadow-black/20'>
-                {cta_button_label}
-              </button>
-            </Link>
+            <CalendlyButton url={cta_link} />
           </div>
         </div>
       </div>

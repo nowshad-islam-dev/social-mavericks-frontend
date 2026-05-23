@@ -12,13 +12,13 @@ declare global {
 }
 
 interface CalendlyButtonProps {
-  url: string;
+  url?: string;
   label?: string;
   icon?: 'phone' | 'arrow';
 }
 
 export const CalendlyButton = ({
-  url,
+  url = 'https://calendly.com/socialmavericksdigital/15min',
   label = 'Book a discovery call',
   icon = 'arrow',
 }: CalendlyButtonProps) => {

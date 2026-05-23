@@ -49,11 +49,7 @@ export default function Navbar({ navigation_links }: NavbarProps) {
           ))}
         </div>
         <div className='hidden items-center gap-4 md:flex'>
-          <CalendlyButton
-            label='Book A Call'
-            url='https://calendly.com/socialmavericksdigital/30min'
-            icon='phone'
-          />
+          <CalendlyButton label='Book A Call' icon='phone' />
         </div>
 
         {/* Mobile Menu Button */}
@@ -76,11 +72,7 @@ export default function Navbar({ navigation_links }: NavbarProps) {
               </li>
             ))}
           </ul>
-          <CalendlyButton
-            label='Book A Call'
-            url='https://calendly.com/socialmavericksdigital/30min'
-            icon='phone'
-          />
+          <CalendlyButton label='Book A Call' icon='phone' />
         </div>
       )}
     </nav>
