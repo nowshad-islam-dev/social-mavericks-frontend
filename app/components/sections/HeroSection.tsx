@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import { getImageUrl } from '@/lib/normalizer';
 import { FaLongArrowAltRight } from 'react-icons/fa';
+import { CalendlyButton } from '@components/common/ui/Button';
 import type { HomePage } from '@/lib/types';
+import Link from 'next/link';
 
 type HeroProps = Pick<
   HomePage,
@@ -36,11 +38,9 @@ export default function Hero({
             {hero_subtitle}
           </p>
           <div className='flex items-center gap-6 pt-4'>
-            <button className='bg-secondary text-on-secondary px-8 py-4 rounded-lg font-bold text-lg hover:scale-[1.02] transition-transform shadow-lg shadow-secondary/20'>
-              {hero_cta_label}
-            </button>
+            <CalendlyButton label={hero_cta_label} />
             <button className='flex items-center gap-2 text-primary font-bold hover:underline'>
-              View Technical Stack
+              <Link href='/services'>Explore Services</Link>
               <FaLongArrowAltRight size={24} />
             </button>
           </div>

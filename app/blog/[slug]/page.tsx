@@ -2,9 +2,9 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 import { BlogCategoryBreadcrumb } from '@components/common/ui/Breadcrumb';
+import { RichTextBody } from '@components/common/ui/RichTextBody';
 import { getBlogPostBySlug, getBlogsSlugList } from '@/lib/services/blogs';
 import { getImageUrl } from '@/lib/normalizer';
 
@@ -64,7 +64,7 @@ export default async function SingleBlogPost({
           </span>
         </p>
         <div className='text-justify prose prose-sm sm:prose-base max-w-none'>
-          <BlocksRenderer content={blog.content} />
+          <RichTextBody content={blog.content} />
         </div>
 
         <div className='mt-8 mx-auto'>

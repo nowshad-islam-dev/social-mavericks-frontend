@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { FaqAccordion } from '@components/common/ui/Accordion';
 import { Tag, PricingBadge } from '@components/common/ui/Badge';
 import { TrackBreadcrumb } from '@components/common/ui/Breadcrumb';
 import { CalendlyButton } from '@components/common/ui/Button';
+import { RichTextBody } from '@components/common/ui/RichTextBody';
 import { getServiceBySlug, getServiceSlugList } from '@/lib/services/services';
 
 export async function generateMetadata({
@@ -82,7 +82,7 @@ export default async function ServiceDetailPage({
 
         {/* ── Long description (rich text) ── */}
         <section className='mb-12'>
-          <BlocksRenderer content={service.long_description} />
+          <RichTextBody content={service.long_description} />
         </section>
 
         {/* ── FAQ ── */}
