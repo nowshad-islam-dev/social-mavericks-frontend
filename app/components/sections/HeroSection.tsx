@@ -19,6 +19,7 @@ export default function Hero({
   hero_cta_label,
   hero_background_image,
 }: HeroProps) {
+  console.log(hero_background_image);
   return (
     <section className='relative pt-32 pb-24 mt-8 overflow-hidden'>
       <div className='max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center gap-16'>

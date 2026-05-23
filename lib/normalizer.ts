@@ -1,10 +1,8 @@
 import type { StrapiImage } from './types';
 
-const BASE_URL = process.env.STRAPI_URL;
-
 export function getImageUrl(image: StrapiImage | null | undefined) {
   if (!image) return null;
-  return `${BASE_URL}${image.url}`;
+  return image.url;
 }
 
 export function normalizeResponse<T>(
