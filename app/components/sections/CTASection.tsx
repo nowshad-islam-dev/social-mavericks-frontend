@@ -1,9 +1,17 @@
 import Link from 'next/link';
 import type { HomePage } from '@/lib/types';
 
-type CTAprops = Pick<HomePage, 'cta_title' | 'cta_button_label' | 'cta_description' | 'cta_link'>
+type CTAprops = Pick<
+  HomePage,
+  'cta_title' | 'cta_button_label' | 'cta_description' | 'cta_link'
+>;
 
-export default function CTA({cta_title, cta_description, cta_button_label, cta_link}: CTAprops) {
+export default function CTA({
+  cta_title,
+  cta_description,
+  cta_button_label,
+  cta_link,
+}: CTAprops) {
   return (
     <section className='py-24'>
       <div className='max-w-7xl mx-auto px-8'>
@@ -15,7 +23,10 @@ export default function CTA({cta_title, cta_description, cta_button_label, cta_l
             <p className='text-on-primary-container text-lg mb-10 leading-relaxed'>
               {cta_description}
             </p>
-            <Link href={cta_link} className='inline-block mb-4 md:mb-0 mr-4'>
+            <Link
+              href={cta_link || '#'}
+              className='inline-block mb-4 md:mb-0 mr-4'
+            >
               <button className='bg-secondary text-on-secondary px-10 py-5 rounded-lg font-bold text-xl hover:scale-[1.02] transition-transform active:scale-95 duration-100 shadow-xl shadow-black/20'>
                 {cta_button_label}
               </button>

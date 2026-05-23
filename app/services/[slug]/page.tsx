@@ -6,8 +6,7 @@ import { FaqAccordion } from '@components/common/ui/Accordion';
 import { Tag, PricingBadge } from '@components/common/ui/Badge';
 import { TrackBreadcrumb } from '@components/common/ui/Breadcrumb';
 import { CalendlyButton } from '@components/common/ui/Button';
-import { fetchAPI } from '@/lib/api';
-import { getServiceBySlug } from '@/lib/services/services';
+import { getServiceBySlug, getServiceSlugList } from '@/lib/services/services';
 
 export async function generateMetadata({
   params,
@@ -28,13 +27,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  try {
-    const res = await fetchAPI('/services?fields[0]=slug');
-    const services: { slug: string }[] = res?.data ?? [];
-    return services.map((s) => ({ slug: s.slug }));
-  } catch {
-    return [];
-  }
+  return await getServiceSlugList();
 }
 
 export default async function ServiceDetailPage({

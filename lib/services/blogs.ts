@@ -61,3 +61,14 @@ export async function searchBlogPosts(query: string): Promise<Blog[]> {
     return [];
   }
 }
+
+export async function getBlogsSlugList(): Promise<string[]> {
+  try {
+    const result = await fetchAPI(`/blog-posts?fields[0]=slug`);
+    const items: { slug: string }[] = result?.data ?? [];
+    return items.map((b) => b.slug);
+  } catch (err) {
+    console.error('[BlogPostPage] Failed to fetch blog slugs:', err);
+    return [];
+  }
+}

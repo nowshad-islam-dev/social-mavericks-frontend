@@ -5,8 +5,7 @@ import { notFound } from 'next/navigation';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 import { BlogCategoryBreadcrumb } from '@components/common/ui/Breadcrumb';
-import { getBlogPostBySlug } from '@/lib/services/blogs';
-import { fetchAPI } from '@/lib/api';
+import { getBlogPostBySlug, getBlogsSlugList } from '@/lib/services/blogs';
 import { getImageUrl } from '@/lib/normalizer';
 
 export async function generateMetadata({
@@ -28,13 +27,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  try {
-    const res = await fetchAPI('/blogs?fields[0]=slug');
-    const blogs: { slug: string }[] = res?.data ?? [];
-    return blogs.map((b) => ({ slug: b.slug }));
-  } catch {
-    return [];
-  }
+  return await getBlogsSlugList();
 }
 
 export default async function SingleBlogPost({
