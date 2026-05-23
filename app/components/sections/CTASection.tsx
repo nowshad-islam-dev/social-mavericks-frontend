@@ -4,14 +4,13 @@ import type { HomePage } from '@/lib/types';
 
 type CTAprops = Pick<
   HomePage,
-  'cta_title' | 'cta_button_label' | 'cta_description' | 'cta_link'
+  'cta_title' | 'cta_button_label' | 'cta_description'
 >;
 
 export default function CTA({
   cta_title,
   cta_description,
   cta_button_label,
-  cta_link,
 }: CTAprops) {
   return (
     <section className='py-24'>
@@ -24,7 +23,7 @@ export default function CTA({
             <p className='text-on-primary-container text-lg mb-10 leading-relaxed'>
               {cta_description}
             </p>
-            <CalendlyButton url={cta_link} />
+            <CalendlyButton label={cta_button_label} />
           </div>
         </div>
       </div>
