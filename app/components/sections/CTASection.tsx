@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { CalendlyButton } from '@components/common/ui/Button';
 import type { HomePage } from '@/lib/types';
 
