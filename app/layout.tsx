@@ -44,6 +44,10 @@ export default async function RootLayout({
   return (
     <html lang='en' className={`${inter.className} h-full antialiased`}>
       <head>
+        <meta
+          name='google-site-verification'
+          content='gETOMMZSddT97kOrL-TPO8UfHuhAxLJehav9NG5W1aY'
+        />
         <link
           href='https://assets.calendly.com/assets/external/widget.css'
           rel='stylesheet'
