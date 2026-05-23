@@ -8,6 +8,7 @@ declare global {
     Calendly?: {
       initPopupWidget: (options: { url: string }) => void;
     };
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -24,6 +25,14 @@ export const CalendlyButton = ({
 }: CalendlyButtonProps) => {
   function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
+
+    // Fire GA4 conversion event
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'booking_initiated', {
+        event_category: 'conversion',
+        event_label: 'Discovery Call',
+      });
+    }
 
     if (!window.Calendly) {
       // Script hasn't loaded yet — fallback to direct link
