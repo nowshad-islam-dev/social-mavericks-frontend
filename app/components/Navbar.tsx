@@ -17,15 +17,16 @@ export default function Navbar({ navigation_links }: NavbarProps) {
   const pathname = usePathname();
 
   return (
-    <nav className='fixed top-0 w-full z-50 bg-white/70 backdrop-blur-md shadow-[0px_24px_48px_-12px_rgba(9,20,38,0.08)]'>
+    <nav className='fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-[0px_24px_48px_-12px_rgba(9,20,38,0.08)]'>
       <div className='flex justify-between items-center px-8 py-4 max-w-7xl mx-auto'>
         {/* Logo */}
-        <div className='relative h-24 w-24'>
-          <Link href='/'>
+        <div className='h-12 w-12 md:h-16 md:w-16 lg:h-24 lg:w-24'>
+          <Link href='/' className='relative block h-full w-full'>
             <Image
               src='/nav-logo.svg'
               alt='Logo'
               fill
+              sizes='(max-width: 768px) 40px, (max-width: 1200px) 60px, 80px'
               className='object-contain'
             />
           </Link>
@@ -64,7 +65,7 @@ export default function Navbar({ navigation_links }: NavbarProps) {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className='md:hidden absolute top-full left-0 w-full bg-white/70 shadow-lg py-4 px-8 flex flex-col gap-4'>
+        <div className='md:hidden absolute top-full left-0 w-full bg-white/90 shadow-lg py-4 px-8 flex flex-col gap-4'>
           <ul className='flex flex-col gap-4'>
             {navLinks.map((navLink) => (
               <li key={navLink.id} onClick={() => setIsOpen(false)}>

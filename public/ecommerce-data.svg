@@ -1,0 +1,79 @@
+
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1200" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#1E293B"/>
+    </linearGradient>
+
+    <linearGradient id="cardGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#6366F1"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="900" fill="url(#bgGradient)"/>
+
+  <!-- Decorative circles -->
+  <circle cx="1050" cy="130" r="180" fill="#38BDF8" opacity="0.08"/>
+  <circle cx="180" cy="760" r="220" fill="#8B5CF6" opacity="0.08"/>
+
+  <!-- Main dashboard card -->
+  <rect x="170" y="130" width="860" height="600" rx="36" fill="#FFFFFF" filter="url(#shadow)"/>
+
+  <!-- Top navbar -->
+  <rect x="170" y="130" width="860" height="90" rx="36" fill="#F8FAFC"/>
+  <circle cx="230" cy="175" r="18" fill="#6366F1"/>
+  <rect x="270" y="160" width="160" height="30" rx="15" fill="#E2E8F0"/>
+
+  <!-- Nav pills -->
+  <rect x="670" y="160" width="90" height="28" rx="14" fill="#E2E8F0"/>
+  <rect x="780" y="160" width="90" height="28" rx="14" fill="#E2E8F0"/>
+  <rect x="890" y="154" width="100" height="40" rx="20" fill="url(#cardGradient)"/>
+
+  <!-- Left product section -->
+  <rect x="230" y="280" width="340" height="340" rx="28" fill="#F8FAFC"/>
+
+  <!-- Shopping bag -->
+  <rect x="320" y="350" width="160" height="180" rx="20" fill="url(#cardGradient)"/>
+  <path d="M360 350C360 310 388 280 430 280C472 280 500 310 500 350" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- Product dots -->
+  <circle cx="300" cy="310" r="10" fill="#38BDF8" opacity="0.6"/>
+  <circle cx="520" cy="330" r="14" fill="#8B5CF6" opacity="0.4"/>
+  <circle cx="280" cy="560" r="18" fill="#6366F1" opacity="0.2"/>
+
+  <!-- Right analytics section -->
+  <rect x="620" y="280" width="340" height="160" rx="28" fill="#F8FAFC"/>
+
+  <!-- Analytics graph -->
+  <path d="M670 390L730 350L790 370L860 310L910 330" stroke="#6366F1" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="730" cy="350" r="10" fill="#38BDF8"/>
+  <circle cx="860" cy="310" r="10" fill="#38BDF8"/>
+
+  <!-- Cart section -->
+  <rect x="620" y="470" width="340" height="150" rx="28" fill="#F8FAFC"/>
+
+  <!-- Shopping cart -->
+  <path d="M700 520H870L850 570H730L700 470H660" stroke="#0F172A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="750" cy="600" r="16" fill="#6366F1"/>
+  <circle cx="835" cy="600" r="16" fill="#6366F1"/>
+
+  <!-- Floating payment card -->
+  <g filter="url(#shadow)">
+    <rect x="760" y="90" width="230" height="130" rx="24" fill="url(#cardGradient)"/>
+    <rect x="790" y="130" width="80" height="18" rx="9" fill="#FFFFFF" opacity="0.8"/>
+    <rect x="790" y="165" width="140" height="14" rx="7" fill="#FFFFFF" opacity="0.45"/>
+    <circle cx="920" cy="160" r="22" fill="#FFFFFF" opacity="0.25"/>
+    <circle cx="945" cy="160" r="22" fill="#FFFFFF" opacity="0.45"/>
+  </g>
+
+  <!-- Bottom CTA -->
+  <rect x="230" y="670" width="740" height="24" rx="12" fill="#CBD5E1" opacity="0.6"/>
+</svg>
+

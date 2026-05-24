@@ -29,25 +29,27 @@ export default async function Service({
 
         <div className='grid grid-cols-1 md:grid-cols-12 gap-6'>
           {/* E-commerce */}
+          {/* E-commerce */}
           <div className='md:col-span-8 bg-surface-container-lowest p-12 rounded-lg flex flex-col md:flex-row gap-8 items-center border border-transparent hover:border-secondary/10 transition-all'>
-            <div className='w-full md:w-1/2 space-y-4'>
-              <span className='material-symbols-outlined text-4xl text-secondary'>
+            <div className='w-full md:w-1/2 space-y-4 shrink-0'>
+              <span className='text-4xl text-secondary'>
                 <IoMdCart />
               </span>
               <h3 className='text-2xl font-bold text-primary'>
                 High-Performance E-commerce
               </h3>
               <p className='text-on-surface-variant leading-relaxed'>
-                headless commerce solutions that prioritize lightning-fast load
+                Headless commerce solutions that prioritize lightning-fast load
                 times and conversion engineering for global retail brands.
               </p>
             </div>
-            <div className='w-full h-full md:w-1/2 relative bg-surface p-4 rounded border border-outline-variant/20'>
+            <div className='relative w-full md:w-1/2 aspect-video p-4 rounded'>
               <Image
                 alt='E-commerce data'
-                className='rounded shadow-sm'
+                className='rounded shadow-sm object-contain'
                 fill
-                src='https://plus.unsplash.com/premium_vector-1719829071224-9d289d2ab992?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                sizes='(max-width: 768px) 100vw, 50vw'
+                src='/ecommerce-data.svg'
               />
             </div>
           </div>
