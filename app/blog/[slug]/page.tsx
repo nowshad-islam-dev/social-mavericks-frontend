@@ -41,7 +41,7 @@ export default async function SingleBlogPost({
   if (!blog) notFound();
 
   return (
-    <main className='mt-40 mb-20 sm:mb-20 max-w-4xl mx-auto px-4 sm:px-6 md:px-8'>
+    <main className='pt-32 pb-20 sm:mb-20 max-w-4xl mx-auto px-4 sm:px-6 md:px-8'>
       <div className='mb-8'>
         <BlogCategoryBreadcrumb category={blog.category} />
       </div>

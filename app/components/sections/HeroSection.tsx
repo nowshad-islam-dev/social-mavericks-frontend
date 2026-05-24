@@ -54,6 +54,7 @@ export default function Hero({
               fill
               sizes='(max-width: 1200px) 40vw, 560px'
               src={getImageUrl(hero_background_image)!}
+              loading='eager'
             />
             <div className='absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent' />
 

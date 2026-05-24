@@ -43,7 +43,7 @@ export default async function ServiceDetailPage({
   const hasFaqs = service.faqs?.length > 0;
 
   return (
-    <main className='min-h-screen bg-background mt-24'>
+    <main className='min-h-screen pt-32 pb-20 bg-background'>
       <div className='mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8'>
         {/* ── Breadcrumb ── */}
         <div className='mb-8'>

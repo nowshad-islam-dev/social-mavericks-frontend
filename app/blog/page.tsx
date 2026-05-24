@@ -45,7 +45,7 @@ export default async function BlogPage({
   const [featuredBlog, ...restBlogs] = blogs;
 
   return (
-    <div className='px-6 my-24 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-16'>
+    <div className='px-8 pt-32 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-16'>
       {/* ── Main column ── */}
       <div className='lg:col-span-8 space-y-16'>
         {/* Featured Article */}

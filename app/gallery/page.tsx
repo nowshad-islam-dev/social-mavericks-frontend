@@ -78,7 +78,7 @@ export default async function GalleryPage({
   const rest = projects.filter((p) => !p.featured);
 
   return (
-    <main className='min-h-screen bg-background mt-28'>
+    <main className='min-h-screen pt-32 pb-20 bg-background'>
       <div className='mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8'>
         {/* ── Header ── */}
         <section className='mb-10'>

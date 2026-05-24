@@ -21,7 +21,7 @@ export default async function ContactPage() {
     social_links,
   } = globals;
   return (
-    <main className='pt-32 pb-20 px-8 max-w-7xl mx-auto my-12'>
+    <main className='pt-32 pb-20 px-8 max-w-7xl mx-auto'>
       <div className='mb-16'>
         <h1 className='text-5xl md:text-6xl font-extrabold tracking-tight text-primary mb-4'>
           {contact_title_first}{' '}
