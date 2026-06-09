@@ -1,6 +1,10 @@
+'use client';
+
 import Image from 'next/image';
-import { IoMdCart } from 'react-icons/io';
+import { IoMdCart, IoMdAnalytics } from 'react-icons/io';
 import { ImDatabase } from 'react-icons/im';
+import { MdOutlineSettingsSuggest } from 'react-icons/md';
+import { motion } from 'framer-motion';
 import type { HomePage } from '@/lib/types';
 
 type ServiceProps = Pick<
@@ -8,14 +12,39 @@ type ServiceProps = Pick<
   'services_section_title' | 'services_section_description'
 >;
 
-export default async function Service({
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring' as const, stiffness: 80, damping: 15 },
+  },
+};
+
+export default function Service({
   services_section_title,
   services_section_description,
 }: ServiceProps) {
   return (
-    <section className='py-24 bg-surface-container-low'>
+    <section className='py-24 bg-surface-container-low overflow-hidden'>
       <div className='max-w-7xl mx-auto px-8'>
-        <div className='flex flex-col md:flex-row justify-between items-end mb-16 gap-8'>
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className='flex flex-col md:flex-row justify-between items-end mb-16 gap-8'
+        >
           <div className='max-w-2xl'>
             <h2 className='text-3xl md:text-5xl font-extrabold text-primary mb-6'>
               {services_section_title}
@@ -25,16 +54,26 @@ export default async function Service({
             </p>
           </div>
           <div className='hidden md:block w-32 h-px bg-outline-variant/30 mb-4'></div>
-        </div>
+        </motion.div>
 
-        <div className='grid grid-cols-1 md:grid-cols-12 gap-6'>
+        {/* Services Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial='hidden'
+          whileInView='visible'
+          viewport={{ once: true, margin: '-100px' }}
+          className='grid grid-cols-1 md:grid-cols-12 gap-6'
+        >
           {/* E-commerce */}
-          {/* E-commerce */}
-          <div className='md:col-span-8 bg-surface-container-lowest p-12 rounded-lg flex flex-col md:flex-row gap-8 items-center border border-transparent hover:border-secondary/10 transition-all'>
+          <motion.div
+            variants={cardVariants}
+            whileHover={{ y: -8, boxShadow: '0 20px 40px -15px rgba(0,89,186,0.12)' }}
+            className='md:col-span-8 bg-surface-container-lowest p-12 rounded-xl flex flex-col md:flex-row gap-8 items-center border border-outline-variant/30 hover:border-secondary/20 transition-all duration-300'
+          >
             <div className='w-full md:w-1/2 space-y-4 shrink-0'>
-              <span className='text-4xl text-secondary'>
+              <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-secondary-fixed text-secondary text-2xl'>
                 <IoMdCart />
-              </span>
+              </div>
               <h3 className='text-2xl font-bold text-primary'>
                 High-Performance E-commerce
               </h3>
@@ -43,7 +82,7 @@ export default async function Service({
                 times and conversion engineering for global retail brands.
               </p>
             </div>
-            <div className='relative w-full md:w-1/2 aspect-video p-4 rounded'>
+            <div className='relative w-full md:w-1/2 aspect-video p-4 rounded-lg overflow-hidden bg-surface-container-low/50 flex items-center justify-center'>
               <Image
                 alt='E-commerce data'
                 className='rounded shadow-sm object-contain'
@@ -52,12 +91,17 @@ export default async function Service({
                 src='/ecommerce-data.svg'
               />
             </div>
-          </div>
+          </motion.div>
+
           {/* Automation */}
-          <div className='md:col-span-4 bg-primary text-on-primary p-12 rounded-lg flex flex-col justify-between'>
-            <span className='material-symbols-outlined text-4xl text-secondary'>
-              automation
-            </span>
+          <motion.div
+            variants={cardVariants}
+            whileHover={{ y: -8, boxShadow: '0 20px 40px -15px rgba(0,0,0,0.3)' }}
+            className='md:col-span-4 bg-primary text-on-primary p-12 rounded-xl flex flex-col justify-between border border-transparent transition-all duration-300'
+          >
+            <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-on-secondary text-2xl'>
+              <MdOutlineSettingsSuggest />
+            </div>
             <div className='mt-12'>
               <h3 className='text-2xl font-bold mb-4'>
                 Intelligent Automation
@@ -67,13 +111,18 @@ export default async function Service({
                 machine-learning integrations.
               </p>
             </div>
-          </div>
+          </motion.div>
+
           {/* ERP */}
-          <div className='md:col-span-4 bg-surface-container-lowest p-12 rounded-lg border border-transparent hover:border-secondary/10 transition-all flex flex-col justify-between'>
-            <span className='material-symbols-outlined text-4xl text-secondary'>
+          <motion.div
+            variants={cardVariants}
+            whileHover={{ y: -8, boxShadow: '0 20px 40px -15px rgba(0,89,186,0.12)' }}
+            className='md:col-span-4 bg-surface-container-lowest p-12 rounded-xl border border-outline-variant/30 hover:border-secondary/20 transition-all duration-300 flex flex-col justify-between'
+          >
+            <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-secondary-fixed text-secondary text-2xl'>
               <ImDatabase />
-            </span>
-            <div className='mt-8'>
+            </div>
+            <div className='mt-12'>
               <h3 className='text-2xl font-bold text-primary mb-4'>
                 Enterprise Resource Planning
               </h3>
@@ -82,10 +131,18 @@ export default async function Service({
                 logistics and data ledgering.
               </p>
             </div>
-          </div>
+          </motion.div>
+
           {/* Analytics */}
-          <div className='md:col-span-8 bg-surface-container-highest p-12 rounded-lg flex items-center justify-between overflow-hidden'>
-            <div className='max-w-xs'>
+          <motion.div
+            variants={cardVariants}
+            whileHover={{ y: -8, boxShadow: '0 20px 40px -15px rgba(0,89,186,0.12)' }}
+            className='md:col-span-8 bg-surface-container-highest p-12 rounded-xl flex items-center justify-between overflow-hidden border border-outline-variant/30 hover:border-secondary/20 transition-all duration-300'
+          >
+            <div className='max-w-xs space-y-4'>
+              <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-secondary-fixed text-secondary text-2xl'>
+                <IoMdAnalytics />
+              </div>
               <h3 className='text-2xl font-bold text-primary mb-4'>
                 Precision Analytics
               </h3>
@@ -94,13 +151,11 @@ export default async function Service({
                 every insight is actionable and verified.
               </p>
             </div>
-            <div className='w-48 h-48 rotate-12 opacity-20'>
-              <span className='material-symbols-outlined text-[10rem] text-primary'>
-                monitoring
-              </span>
+            <div className='w-48 h-48 rotate-12 opacity-15 text-primary flex items-center justify-center shrink-0'>
+              <IoMdAnalytics size={160} />
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

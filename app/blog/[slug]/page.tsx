@@ -49,7 +49,7 @@ export default async function SingleBlogPost({
         <h1 className='text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-center md:text-start font-bold text-primary mb-6 sm:mb-8 leading-tight'>
           {blog.title}
         </h1>
-        <div className='relative h-48 sm:h-64 md:h-96 w-full mb-6 sm:mb-8 border'>
+        <div className='relative w-full mb-6 sm:mb-8 aspect-video border'>
           <Image
             src={getImageUrl(blog.cover_image)!}
             alt={blog.title}

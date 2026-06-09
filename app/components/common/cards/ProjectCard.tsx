@@ -1,8 +1,11 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaChartLine, FaArrowRightLong } from 'react-icons/fa6';
 import { CategoryBadge, Tag } from '@components/common/ui/Badge';
 import { getImageUrl } from '@/lib/normalizer';
+import { motion } from 'framer-motion';
 import type { Project } from '@/lib/types';
 
 interface ProjectCardProps {
@@ -11,32 +14,40 @@ interface ProjectCardProps {
 
 export const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <Link
-      href={`/gallery/${project.slug}`}
-      className='group flex flex-col overflow-hidden rounded-xl border border-outline-variant bg-surface-container-lowest transition-shadow duration-200 hover:shadow-md'
+    <motion.div
+      whileHover={{ y: -6, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02)' }}
+      className='group relative flex flex-col overflow-hidden rounded-xl border border-outline-variant bg-surface-container-lowest transition-all duration-300'
     >
+      {/* Absolute overlay link for the entire card */}
+      <Link
+        href={`/gallery/${project.slug}`}
+        className='absolute inset-0 z-10'
+        aria-label={`View ${project.title} case study`}
+      />
+
       {/* Thumbnail */}
       <div className='relative h-44 w-full overflow-hidden'>
         <Image
           src={getImageUrl(project.thumbnail)!}
-          alt={'project image'}
-          className='h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]'
+          alt={project.title}
+          className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]'
           fill
+          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
         />
-        <div className='absolute left-3 top-3'>
+        <div className='absolute left-3 top-3 z-20'>
           <CategoryBadge category={project.category} />
         </div>
       </div>
 
       {/* Content */}
-      <div className='flex flex-1 flex-col gap-3 p-5'>
+      <div className='flex flex-1 flex-col gap-3 p-5 z-20'>
         <div className='flex flex-col gap-1.5'>
           {project.client_industry && (
             <span className='font-label text-xs text-outline'>
               {project.client_industry}
             </span>
           )}
-          <h3 className='font-headline text-base font-semibold text-on-surface'>
+          <h3 className='font-headline text-base font-semibold text-on-surface group-hover:text-secondary transition-colors duration-200'>
             {project.title}
           </h3>
           <p className='font-body text-sm leading-relaxed text-on-surface-variant line-clamp-2'>
@@ -69,47 +80,50 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           )}
 
           <div className='flex items-center justify-between border-t border-outline-variant pt-3'>
-            <span className='font-label text-xs font-medium text-secondary transition-opacity duration-150 group-hover:opacity-75'>
-              View case study →
+            <span className='font-label text-xs font-medium text-secondary flex items-center gap-1 group-hover:underline'>
+              View case study <FaArrowRightLong className='w-3 h-3 group-hover:translate-x-1 transition-transform duration-200' />
             </span>
             {project.live_url && (
-              <span
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.open(
-                    project.live_url,
-                    '_blank',
-                    'noopener,noreferrer',
-                  );
-                }}
-                className='font-label text-xs text-outline transition-colors duration-150 hover:text-on-surface'
+              <a
+                href={project.live_url}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='relative z-30 font-label text-xs text-outline hover:text-primary transition-colors duration-150'
               >
                 Live ↗
-              </span>
+              </a>
             )}
           </div>
         </div>
       </div>
-    </Link>
+    </motion.div>
   );
 };
 
 // Featured card — full width, more visual weight
 export const FeaturedProjectCard = ({ project }: { project: Project }) => {
   return (
-    <Link
-      href={`/gallery/${project.slug}`}
-      className='group relative flex flex-col overflow-hidden rounded-xl border border-outline-variant bg-surface-container-lowest transition-shadow duration-200 hover:shadow-md sm:flex-row'
+    <motion.div
+      whileHover={{ y: -6, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02)' }}
+      className='group relative flex flex-col overflow-hidden rounded-xl border border-outline-variant bg-surface-container-lowest transition-all duration-300 sm:flex-row'
     >
+      {/* Absolute overlay link for the entire card */}
+      <Link
+        href={`/gallery/${project.slug}`}
+        className='absolute inset-0 z-10'
+        aria-label={`View ${project.title} case study`}
+      />
+
       {/* Image — left side on desktop */}
       <div className='relative h-52 w-full overflow-hidden sm:h-auto sm:w-2/5'>
         <Image
           src={getImageUrl(project.thumbnail)!}
-          alt={'project image'}
-          className='h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]'
+          alt={project.title}
+          className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]'
           fill
+          sizes='(max-width: 768px) 100vw, 40vw'
         />
-        <div className='absolute left-3 top-3'>
+        <div className='absolute left-3 top-3 z-20'>
           <span className='inline-flex items-center rounded-full bg-primary px-2.5 py-0.5 font-label text-xs font-medium text-on-primary'>
             Featured
           </span>
@@ -117,7 +131,7 @@ export const FeaturedProjectCard = ({ project }: { project: Project }) => {
       </div>
 
       {/* Content — right side on desktop */}
-      <div className='flex flex-1 flex-col justify-between gap-4 p-6'>
+      <div className='flex flex-1 flex-col justify-between gap-4 p-6 z-20'>
         <div className='flex flex-col gap-3'>
           <div className='flex items-center gap-2'>
             <CategoryBadge category={project.category} />
@@ -128,7 +142,7 @@ export const FeaturedProjectCard = ({ project }: { project: Project }) => {
             )}
           </div>
 
-          <h3 className='font-headline text-xl font-semibold text-on-surface'>
+          <h3 className='font-headline text-xl font-semibold text-on-surface group-hover:text-secondary transition-colors duration-200'>
             {project.title}
           </h3>
 
@@ -161,12 +175,24 @@ export const FeaturedProjectCard = ({ project }: { project: Project }) => {
             </div>
           )}
 
-          <div className='flex items-center gap-1.5 font-label text-sm font-medium text-secondary transition-gap duration-150 group-hover:gap-2.5'>
-            View case study
-            <FaArrowRightLong />
+          <div className='flex items-center justify-between border-t border-outline-variant pt-3'>
+            <span className='font-label text-sm font-medium text-secondary flex items-center gap-1.5 group-hover:underline'>
+              View case study
+              <FaArrowRightLong className='group-hover:translate-x-1 transition-transform duration-200' />
+            </span>
+            {project.live_url && (
+              <a
+                href={project.live_url}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='relative z-30 font-label text-xs text-outline hover:text-primary transition-colors duration-150'
+              >
+                Live ↗
+              </a>
+            )}
           </div>
         </div>
       </div>
-    </Link>
+    </motion.div>
   );
 };

@@ -1,4 +1,7 @@
 import { getHomePage } from '@/lib/services/home';
+import { getProjects } from '@/lib/services/projects';
+import { getTestimonials } from '@/lib/services/testimonials';
+import { normalizeCollection } from '@/lib/normalizer';
 import Hero from './components/sections/HeroSection';
 import Service from './components/sections/ServiceSection';
 import Gallery from './components/sections/GallerySection';
@@ -6,7 +9,14 @@ import Testimonial from './components/sections/TestimonialSection';
 import CTA from './components/sections/CTASection';
 
 export default async function Home() {
-  const home = await getHomePage();
+  const [home, rawProjects, rawTestimonials] = await Promise.all([
+    getHomePage(),
+    getProjects(),
+    getTestimonials(),
+  ]);
+
+  const projects = normalizeCollection(rawProjects);
+  const testimonials = normalizeCollection(rawTestimonials).slice(0, 2);
 
   const heroProps = {
     hero_title_first: home.hero_title_first,
@@ -23,10 +33,12 @@ export default async function Home() {
 
   const galleryProps = {
     gallery_section_title: home.gallery_section_title,
+    projects,
   };
 
   const testimonialProps = {
     testimonials_section_title: home.testimonials_section_title,
+    testimonials,
   };
 
   const ctaProps = {

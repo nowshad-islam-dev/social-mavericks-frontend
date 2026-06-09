@@ -102,7 +102,7 @@ export default async function ContactPage() {
                   type='submit'
                 >
                   Send Inquiry
-                  <span className='material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform'>
+                  <span className='text-xl group-hover:translate-x-1 transition-transform'>
                     <FaLongArrowAltRight />
                   </span>
                 </button>
@@ -116,7 +116,7 @@ export default async function ContactPage() {
             <h2 className='text-2xl font-bold mb-8'>Contact Details</h2>
             <div className='space-y-8'>
               <div className='flex gap-4 items-start'>
-                <span className='material-symbols-outlined text-secondary-container'>
+                <span className='text-secondary-container text-xl'>
                   <FaLocationDot />
                 </span>
                 <div>
@@ -127,7 +127,7 @@ export default async function ContactPage() {
                 </div>
               </div>
               <div className='flex gap-4 items-start'>
-                <span className='material-symbols-outlined text-secondary-container'>
+                <span className='text-secondary-container text-xl'>
                   <FaPhoneAlt />
                 </span>
                 <div>
@@ -138,7 +138,7 @@ export default async function ContactPage() {
                 </div>
               </div>
               <div className='flex gap-4 items-start'>
-                <span className='material-symbols-outlined text-secondary-container'>
+                <span className='text-secondary-container text-xl'>
                   <TfiEmail />
                 </span>
                 <div>
@@ -159,7 +159,7 @@ export default async function ContactPage() {
                   className='w-12 h-12 flex items-center justify-center bg-white/5 hover:bg-secondary transition-colors group'
                   href={social_links[0]?.url}
                 >
-                  <span className='material-symbols-outlined text-xl'>
+                  <span className='text-xl'>
                     <FaFacebook />
                   </span>
                 </a>
@@ -167,7 +167,7 @@ export default async function ContactPage() {
                   className='w-12 h-12 flex items-center justify-center bg-white/5 hover:bg-secondary transition-colors group'
                   href={social_links[1]?.url}
                 >
-                  <span className='material-symbols-outlined text-xl'>
+                  <span className='text-xl'>
                     <FaInstagram />
                   </span>
                 </a>

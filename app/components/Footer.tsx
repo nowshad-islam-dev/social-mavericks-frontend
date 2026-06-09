@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { TfiEmail } from 'react-icons/tfi';
-import { FaPhoneAlt } from 'react-icons/fa';
+import { FaPhoneAlt, FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaGithub, FaYoutube, FaLink } from 'react-icons/fa';
 import type { GlobalSettings } from '@/lib/types';
 
 type FooterProps = Pick<
@@ -12,6 +12,26 @@ type FooterProps = Pick<
   | 'contact_email'
   | 'contact_text'
 >;
+
+function getSocialIcon(platform: string) {
+  switch (platform.toLowerCase()) {
+    case 'facebook':
+      return <FaFacebook />;
+    case 'instagram':
+      return <FaInstagram />;
+    case 'linkedin':
+      return <FaLinkedin />;
+    case 'twitter':
+    case 'x':
+      return <FaTwitter />;
+    case 'github':
+      return <FaGithub />;
+    case 'youtube':
+      return <FaYoutube />;
+    default:
+      return <FaLink />;
+  }
+}
 
 export default function Footer({
   navigation_links,
@@ -46,7 +66,7 @@ export default function Footer({
             <ul className='space-y-1 md:space-y-2'>
               {navigationLinks.map((link) => (
                 <li key={link.id}>
-                  <Link href={link.url} className='text-xs'>
+                  <Link href={link.url} className='text-xs hover:text-secondary transition-colors'>
                     {link.label}
                   </Link>
                 </li>
@@ -59,14 +79,14 @@ export default function Footer({
             <h4 className='font-semibold text-primary mb-3 text-xs md:text-sm'>
               Legal
             </h4>
-            <ul>
-              <li className='text-xs'>
-                <Link href='/terms' className='text-xs'>
+            <ul className='space-y-1 md:space-y-2'>
+              <li>
+                <Link href='/terms' className='text-xs hover:text-secondary transition-colors'>
                   Terms of Service
                 </Link>
               </li>
-              <li className='text-xs'>
-                <Link href='/privacy' className='text-xs'>
+              <li>
+                <Link href='/privacy' className='text-xs hover:text-secondary transition-colors'>
                   Privacy Policy
                 </Link>
               </li>
@@ -80,7 +100,7 @@ export default function Footer({
             </h4>
             <a
               href={`mailto:${contact_email}`}
-              className='text-xs md:text-sm text-tertiary flex items-center gap-2 mb-2'
+              className='text-xs md:text-sm text-tertiary flex items-center gap-2 mb-2 hover:text-secondary transition-colors'
             >
               <span className='inline-flex items-center gap-1'>
                 <TfiEmail />
@@ -89,14 +109,19 @@ export default function Footer({
             </a>
             <a
               href={`tel:${contact_text}`}
-              className='text-xs md:text-sm text-tertiary flex items-center gap-2'
+              className='text-xs md:text-sm text-tertiary flex items-center gap-2 hover:text-secondary transition-colors'
             >
               <FaPhoneAlt />
               {contact_text}
             </a>
           </div>
+        </div>
 
-          {/* Social Links */}
+        {/* Copyright & Social */}
+        <div className='border-t border-gray-200 pt-6 flex flex-col md:flex-row justify-between items-center gap-4'>
+          <p className='text-xs text-tertiary text-center md:text-left'>
+            &copy; {new Date().getFullYear()} {site_name}. All rights reserved.
+          </p>
           {socialLinks.length > 0 && (
             <div className='flex gap-3'>
               {socialLinks.map((link) => (
@@ -105,18 +130,14 @@ export default function Footer({
                   href={link.url}
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='text-tertiary hover:text-primary transition'
-                />
+                  className='w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-slate-500 hover:bg-secondary hover:text-white hover:border-secondary hover:scale-105 transition-all duration-300'
+                  title={link.platform}
+                >
+                  {getSocialIcon(link.platform)}
+                </a>
               ))}
             </div>
           )}
-        </div>
-
-        {/* Copyright */}
-        <div className='border-t border-gray-200 pt-6'>
-          <p className='text-xs text-tertiary text-center'>
-            &copy; {new Date().getFullYear()} {site_name}. All rights reserved.
-          </p>
         </div>
       </div>
     </footer>

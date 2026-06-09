@@ -63,9 +63,9 @@ module.exports = {
         full: '0.75rem',
       },
       fontFamily: {
-        headline: ['Manrope'],
-        body: ['Inter'],
-        label: ['Inter'],
+        headline: ['Inter', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+        label: ['Inter', 'sans-serif'],
       },
     },
   },

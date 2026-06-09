@@ -7,9 +7,10 @@ import type { Blog, BlogCategory } from '../types';
 
 const BLOGS_PER_PAGE = 25;
 
-export async function getBlogPosts(page: number = 1) {
+export async function getBlogPosts(page: number = 1, categorySlug?: string) {
+  const categoryFilter = categorySlug ? `&filters[category][slug][$eq]=${categorySlug}` : '';
   const result = await fetchCollection<Blog>(
-    `${endpoints.blogs}&pagination[page]=${page}&pagination[pageSize]=${BLOGS_PER_PAGE}&sort=publishedAt:desc`,
+    `${endpoints.blogs}&pagination[page]=${page}&pagination[pageSize]=${BLOGS_PER_PAGE}&sort=publishedAt:desc${categoryFilter}`,
   );
   return result;
 }
@@ -62,11 +63,11 @@ export async function searchBlogPosts(query: string): Promise<Blog[]> {
   }
 }
 
-export async function getBlogsSlugList(): Promise<string[]> {
+export async function getBlogsSlugList(): Promise<{ slug: string }[]> {
   try {
     const result = await fetchAPI(`/blog-posts?fields[0]=slug`);
     const items: { slug: string }[] = result?.data ?? [];
-    return items.map((b) => b.slug);
+    return items.map((b) => ({ slug: b.slug }));
   } catch (err) {
     console.error('[BlogPostPage] Failed to fetch blog slugs:', err);
     return [];
