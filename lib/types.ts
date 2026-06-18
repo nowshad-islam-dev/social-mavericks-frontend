@@ -154,6 +154,7 @@ export interface Service extends StrapiEntity {
   slug: string;
   short_description: string;
   long_description: BlocksContent;
+  cover_photo: StrapiImage;
   order: number;
   pricing: Pricing;
   tags: string[];

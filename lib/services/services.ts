@@ -5,7 +5,7 @@ import type { Service } from '../types';
 export async function getServiceBySlug(slug: string): Promise<Service | null> {
   try {
     const res = await fetchAPI(
-      `/services?filters[slug][$eq]=${slug}&populate[faqs]=*&populate[track][populate]=*`,
+      `/services?filters[slug][$eq]=${slug}&populate=*`,
     );
 
     const items = normalizeCollection<Service>(res);

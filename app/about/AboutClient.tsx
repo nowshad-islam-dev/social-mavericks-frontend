@@ -3,17 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import {
-  FiArrowRight,
-  FiGithub,
-  FiLinkedin,
-  FiTwitter,
-  FiMail,
-  FiCpu,
-  FiTrendingUp,
-  FiLayers,
-  FiAward,
-} from 'react-icons/fi';
+import { FiArrowRight, FiCpu, FiTrendingUp, FiLayers } from 'react-icons/fi';
 import { getImageUrl } from '@/lib/normalizer';
 import { RichTextBody } from '@components/common/ui/RichTextBody';
 import type { AboutPage } from '@/lib/types';
