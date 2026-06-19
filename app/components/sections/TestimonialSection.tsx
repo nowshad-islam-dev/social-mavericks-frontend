@@ -1,8 +1,9 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { MdVerified } from 'react-icons/md';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { getImageUrl } from '@/lib/normalizer';
 import type { HomePage, Testimonial } from '@/lib/types';
 
@@ -10,28 +11,24 @@ type TestimonialProps = Pick<HomePage, 'testimonials_section_title'> & {
   testimonials: Testimonial[];
 };
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, x: -30 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { type: 'spring' as const, stiffness: 60, damping: 15 },
-  },
-};
-
 export default function Testimonial({
   testimonials_section_title,
   testimonials,
 }: TestimonialProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (!testimonials || testimonials.length <= 1) return;
+
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [testimonials]);
+
+  if (!testimonials || testimonials.length === 0) return null;
+
   return (
     <section className='py-24 bg-surface-container-low overflow-hidden'>
       <div className='max-w-7xl mx-auto px-8'>
@@ -47,50 +44,65 @@ export default function Testimonial({
               {testimonials_section_title}
             </motion.h2>
 
-            <motion.div
-              variants={containerVariants}
-              initial='hidden'
-              whileInView='visible'
-              viewport={{ once: true, margin: '-50px' }}
-              className='space-y-12'
-            >
-              {testimonials.map((testimonial) => (
+            <div className='relative min-h-[220px] md:min-h-[180px] flex flex-col justify-between'>
+              <AnimatePresence mode='wait'>
                 <motion.div
-                  key={testimonial.id}
-                  variants={itemVariants}
+                  key={currentIndex}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -30 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
                   className='relative pl-8 border-l-2 border-secondary'
                 >
                   <p className='text-xl italic text-primary leading-relaxed mb-4'>
-                    &#34;{testimonial.quote}&#34;
+                    &#34;{testimonials[currentIndex].quote}&#34;
                   </p>
                   <div className='flex items-center gap-4'>
                     <div className='relative w-10 h-10 rounded-full overflow-hidden shrink-0 bg-slate-200 border border-slate-200/50 shadow-sm'>
-                      {testimonial.photo ? (
+                      {testimonials[currentIndex].photo ? (
                         <Image
-                          src={getImageUrl(testimonial.photo)!}
-                          alt={testimonial.name}
+                          src={getImageUrl(testimonials[currentIndex].photo)!}
+                          alt={testimonials[currentIndex].name}
                           fill
                           className='object-cover'
                           sizes='40px'
                         />
                       ) : (
                         <div className='flex items-center justify-center h-full w-full bg-secondary/10 text-secondary text-xs font-bold uppercase'>
-                          {testimonial.name.slice(0, 2)}
+                          {testimonials[currentIndex].name.slice(0, 2)}
                         </div>
                       )}
                     </div>
                     <div>
                       <div className='font-bold text-primary'>
-                        {testimonial.name}
+                        {testimonials[currentIndex].name}
                       </div>
                       <div className='text-sm text-on-surface-variant'>
-                        {testimonial.role_or_company}
+                        {testimonials[currentIndex].role_or_company}
                       </div>
                     </div>
                   </div>
                 </motion.div>
-              ))}
-            </motion.div>
+              </AnimatePresence>
+
+              {/* Navigation Indicators */}
+              {testimonials.length > 1 && (
+                <div className='flex items-center gap-2 mt-8 pl-8'>
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentIndex(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        currentIndex === index
+                          ? 'bg-secondary w-6'
+                          : 'bg-outline-variant hover:bg-secondary/50'
+                      }`}
+                      aria-label={`Go to testimonial ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Graphic Side */}

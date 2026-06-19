@@ -34,6 +34,38 @@ export interface DifferencePoint {
   description: string;
 }
 
+export interface Stat {
+  value: string;
+  label: string;
+  description: string;
+}
+
+export interface Milestone {
+  year: string;
+  title: string;
+  description: string;
+}
+
+export interface WorkflowStep {
+  num: string;
+  title: string;
+  description: string;
+  icon: StrapiImage;
+}
+
+export interface Founder {
+  name: string;
+  initials: string;
+  role: string;
+  bio: string;
+  tags: string[];
+  profile_photo: StrapiImage;
+  github: string;
+  linkedin: string;
+  twitter: string;
+  email: string;
+}
+
 interface NavigationLink {
   id: number;
   label: string;
@@ -77,10 +109,26 @@ export interface HomePage extends StrapiEntity {
 }
 
 export interface AboutPage extends StrapiEntity {
+  title: string;
   headline: string;
   description: string;
-  tech_stack_logos: StrapiImage[];
+  philosophy_title: string;
+  philosophy_heading: string;
+  timeline_title: string;
+  timeline_heading: string;
+  method_title: string;
+  method_heading: string;
+  founders_title: string;
+  founders_heading: string;
+  founders_description: string;
+  gradient_cta_title: string;
+  gradient_cta_heading: string;
+  gradient_cta_description: string;
+  founders: Founder[];
+  milestones: Milestone[];
+  workflow_steps: WorkflowStep[];
   difference_points: DifferencePoint[];
+  stats: Stat[];
 }
 
 export type Pricing = 'Retainer' | 'Fixed' | 'Milestone-based';
@@ -106,6 +154,7 @@ export interface Service extends StrapiEntity {
   slug: string;
   short_description: string;
   long_description: BlocksContent;
+  cover_photo: StrapiImage;
   order: number;
   pricing: Pricing;
   tags: string[];
@@ -161,4 +210,10 @@ export interface Blog extends StrapiEntity, StrapiTimestamps {
   category: BlogCategory;
   seo_title: string;
   seo_description: string;
+}
+
+export interface Partner extends StrapiEntity {
+  name: string;
+  logo: StrapiImage;
+  website: string;
 }

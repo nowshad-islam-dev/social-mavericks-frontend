@@ -1,22 +1,26 @@
 import { getHomePage } from '@/lib/services/home';
 import { getProjects } from '@/lib/services/projects';
 import { getTestimonials } from '@/lib/services/testimonials';
+import { getPartners } from '@/lib/services/partners';
 import { normalizeCollection } from '@/lib/normalizer';
 import Hero from './components/sections/HeroSection';
 import Service from './components/sections/ServiceSection';
 import Gallery from './components/sections/GallerySection';
 import Testimonial from './components/sections/TestimonialSection';
 import CTA from './components/sections/CTASection';
+import Partners from './components/sections/PartnerSection';
 
 export default async function Home() {
-  const [home, rawProjects, rawTestimonials] = await Promise.all([
+  const [home, rawProjects, rawTestimonials, rawPartners] = await Promise.all([
     getHomePage(),
     getProjects(),
     getTestimonials(),
+    getPartners()
   ]);
 
   const projects = normalizeCollection(rawProjects);
-  const testimonials = normalizeCollection(rawTestimonials).slice(0, 2);
+  const testimonials = normalizeCollection(rawTestimonials).slice(0, 5);
+  const partners = normalizeCollection(rawPartners);
 
   const heroProps = {
     hero_title_first: home.hero_title_first,
@@ -41,6 +45,10 @@ export default async function Home() {
     testimonials,
   };
 
+  const partnerProps = {
+    partners,
+  };
+
   const ctaProps = {
     cta_title: home.cta_title,
     cta_description: home.cta_description,
@@ -52,6 +60,7 @@ export default async function Home() {
     <div>
       <Hero {...heroProps} />
       <Service {...serviceProps} />
+      <Partners {...partnerProps} />
       <Gallery {...galleryProps} />
       <Testimonial {...testimonialProps} />
       <CTA {...ctaProps} />
