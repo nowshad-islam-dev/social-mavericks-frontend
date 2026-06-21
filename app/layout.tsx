@@ -39,6 +39,8 @@ export default async function RootLayout({
     footer_description: globals.footer_description,
     contact_email: globals.contact_email,
     contact_text: globals.contact_text,
+    address: globals.address,
+    google_map_link: globals.google_map_link,
   };
 
   return (
