@@ -43,8 +43,8 @@ export default async function ProjectDetailPage({
   const screenshots = project.screenshots || [];
 
   return (
-    <main className='min-h-screen pt-32 pb-20 bg-background'>
-      <div className='mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8'>
+    <main className='min-h-screen pt-24 lg:pt-32 pb-20 bg-background'>
+      <div className='mx-auto max-w-4xl px-4 sm:px-6 lg:px-8'>
         {/* Back Link */}
         <div className='mb-8'>
           <Link
@@ -84,7 +84,8 @@ export default async function ProjectDetailPage({
                 KEY SUCCESS METRIC
               </span>
               <h3 className='text-2xl sm:text-3xl font-extrabold flex items-center gap-2'>
-                <FaChartLine className='text-secondary shrink-0' /> {project.result}
+                <FaChartLine className='text-secondary shrink-0' />{' '}
+                {project.result}
               </h3>
             </div>
             {project.live_url && (
@@ -159,7 +160,9 @@ export default async function ProjectDetailPage({
                   Looking for a similar performance result?
                 </h3>
                 <p className='mt-2 font-body text-sm text-on-surface-variant leading-relaxed'>
-                  Let's explore your technology bottlenecks. We build custom integrations, high-converting platforms, and system automations tailored to your operational KPIs.
+                  Let's explore your technology bottlenecks. We build custom
+                  integrations, high-converting platforms, and system
+                  automations tailored to your operational KPIs.
                 </p>
               </div>
               <div className='flex flex-wrap gap-3 shrink-0'>

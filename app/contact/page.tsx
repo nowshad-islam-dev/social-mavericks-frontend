@@ -141,11 +141,11 @@ export default async function ContactPage() {
                 <span className='text-secondary-container text-xl'>
                   <TfiEmail />
                 </span>
-                <div>
+                <div className='flex-1 min-w-0'>
                   <h3 className='font-semibold text-white/60 text-sm uppercase tracking-widest mb-1'>
                     Email
                   </h3>
-                  <p className='text-lg'>{contact_email}</p>
+                  <p className='text-lg break-all'>{contact_email}</p>
                 </div>
               </div>
             </div>

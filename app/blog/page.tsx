@@ -47,12 +47,15 @@ export default async function BlogPage({
   const [featuredBlog, ...restBlogs] = blogs;
 
   return (
-    <div className='px-8 pt-32 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-16'>
+    <div className='px-8 pt-20 lg:pt-32 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-16'>
       {/* ── Main column ── */}
       <div className='lg:col-span-8 space-y-16'>
         {/* Featured Article */}
         {featuredBlog && (
-          <Link href={`/blog/${featuredBlog.slug}`} className='group block cursor-pointer'>
+          <Link
+            href={`/blog/${featuredBlog.slug}`}
+            className='group block cursor-pointer'
+          >
             <article>
               <div className='relative overflow-hidden rounded-2xl aspect-video mb-8 border border-outline-variant/15 shadow-sm'>
                 <Image
@@ -71,7 +74,9 @@ export default async function BlogPage({
               </div>
               <div className='space-y-4'>
                 <div className='flex items-center gap-4 text-xs font-semibold text-on-surface-variant/60 uppercase tracking-widest'>
-                  <span>{new Date(featuredBlog.publishedAt).toDateString()}</span>
+                  <span>
+                    {new Date(featuredBlog.publishedAt).toDateString()}
+                  </span>
                 </div>
                 <h2 className='text-3xl font-bold text-primary group-hover:text-secondary transition-colors duration-300'>
                   {featuredBlog.title}
@@ -120,7 +125,10 @@ export default async function BlogPage({
               Categories
             </h4>
             {activeCategory && (
-              <Link href='/blog' className='text-xs text-secondary hover:underline transition-colors'>
+              <Link
+                href='/blog'
+                className='text-xs text-secondary hover:underline transition-colors'
+              >
                 Clear
               </Link>
             )}
@@ -134,10 +142,16 @@ export default async function BlogPage({
                     className='flex justify-between items-center group'
                     href={`/blog?category=${category.slug}`}
                   >
-                    <span className={classNames('transition-colors font-medium text-sm', {
-                      'text-secondary font-bold': isCategoryActive,
-                      'text-on-surface-variant group-hover:text-secondary': !isCategoryActive,
-                    })}>
+                    <span
+                      className={classNames(
+                        'transition-colors font-medium text-sm',
+                        {
+                          'text-secondary font-bold': isCategoryActive,
+                          'text-on-surface-variant group-hover:text-secondary':
+                            !isCategoryActive,
+                        },
+                      )}
+                    >
                       {category.name}
                     </span>
                   </Link>

@@ -20,9 +20,9 @@ export default async function ServicesPage() {
   ]);
 
   return (
-    <main className='pt-32 min-h-screen bg-background'>
+    <main className='min-h-screen pt-20 lg:pt-[114px] pb-20 bg-background'>
       <ServicesHero />
-      <div id='tracks' className='mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8'>
+      <div id='tracks' className='mx-auto max-w-5xl pt-12 px-4 sm:px-6 lg:px-8'>
         {tracks.length === 0 ? (
           <EmptyState message='Services coming soon.' />
         ) : (
