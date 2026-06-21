@@ -34,7 +34,7 @@ const staggerContainer = {
 
 export default function AboutClient({ about }: AboutClientProps) {
   return (
-    <main className='min-h-screen pt-32 pb-24 bg-background overflow-x-hidden text-on-surface'>
+    <main className='min-h-screen pt-20 lg:pt-32 pb-20 bg-background overflow-x-hidden text-on-surface'>
       {/* ── HERO SECTION ── */}
       <section className='relative max-w-7xl mx-auto px-8 py-12 md:py-20'>
         <div className='grid grid-cols-1 lg:grid-cols-12 gap-12 items-center'>

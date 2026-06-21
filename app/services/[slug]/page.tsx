@@ -39,7 +39,7 @@ export default async function ServiceDetailPage({
   if (!service) notFound();
 
   return (
-    <main className='min-h-screen pt-24 lg:pt-32 pb-16 lg:pb-20'>
+    <main className='min-h-screen pt-24 lg:pt-[114px] pb-16 lg:pb-20'>
       <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
         <div className='grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-8 lg:gap-12'>
           {/* Main Content */}
