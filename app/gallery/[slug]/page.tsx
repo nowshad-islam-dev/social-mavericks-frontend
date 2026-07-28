@@ -23,6 +23,10 @@ export async function generateMetadata({
   return {
     title: `${project.title} Case Study — Social Mavericks`,
     description: project.description,
+    alternates: {
+      // Points all category variants to the main root gallery
+      canonical: 'https://socialmavdigital.com/gallery',
+    },
   };
 }
 
@@ -160,8 +164,8 @@ export default async function ProjectDetailPage({
                   Looking for a similar performance result?
                 </h3>
                 <p className='mt-2 font-body text-sm text-on-surface-variant leading-relaxed'>
-                  Let's explore your technology bottlenecks. We build custom
-                  integrations, high-converting platforms, and system
+                  Let&apos;s explore your technology bottlenecks. We build
+                  custom integrations, high-converting platforms, and system
                   automations tailored to your operational KPIs.
                 </p>
               </div>
